@@ -61,4 +61,24 @@ IdentityCtx *identity_setup(int n_int);
 void identity_apply(double *z, const double *r, void *ctx);
 void identity_free(IdentityCtx *ctx);
 
+/* ------------------------------------------------------------------ */
+/* Multigrid preconditioner                                            */
+/* ------------------------------------------------------------------ */
+
+#include "multigrid.h"
+
+//This is the structure for the multigrid preconditioner context. 
+typedef struct {
+    int    n_int;   //Number of interior grid points per direction on the fine grid.
+    double h;       //fine grid mesh spacing
+    int    nu1;     //No. of pre-smoothing steps
+    int    nu2;     //No. of post-smoothing steps
+    double omega;   //Jacobi damping weight
+} MultigridCtx;
+
+//Function prototypes for the multigrid preconditioner setup, apply, and free functions.
+MultigridCtx *multigrid_setup(int n_int, int nu1, int nu2, double omega);
+void          multigrid_apply(double *z, const double *r, void *ctx);
+void          multigrid_free(MultigridCtx *ctx);
+
 #endif /* PRECOND_H */

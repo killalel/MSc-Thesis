@@ -17,7 +17,7 @@
 //This function just prints the usage message for the program, which is called if the user provides invalid arguments.
 static void print_usage(const char *prog)
 {
-    fprintf(stderr, "Usage: %s <n_int> [tol] [max_iter] [precond: blockjacobi|none]\n", prog);
+    fprintf(stderr, "Usage: %s <n_int> [tol] [max_iter] [precond: blockjacobi|multigrid|none]\n", prog);
 }
 
 //Here is our main
@@ -67,6 +67,7 @@ int main(int argc, char **argv)
     void *precond_ctx;
     BlockJacobiCtx *bj_ctx  = NULL;
     IdentityCtx *id_ctx  = NULL;
+    MultigridCtx   *mg_ctx = NULL;
 
     //This is for timing the program.
     clock_t setup_start = clock(); 
@@ -76,6 +77,10 @@ int main(int argc, char **argv)
         bj_ctx = block_jacobi_setup(n_int);
         precond_apply = block_jacobi_apply;
         precond_ctx = bj_ctx;
+    } else if (strcmp(precond_name, "multigrid") == 0) {
+        mg_ctx = multigrid_setup(n_int, 2, 2, 2.0/3.0);
+        precond_apply = multigrid_apply;
+        precond_ctx = mg_ctx;
     } else if (strcmp(precond_name, "none") == 0) {
         id_ctx = identity_setup(n_int);
         precond_apply = identity_apply;
@@ -131,6 +136,7 @@ int main(int argc, char **argv)
 
     //This frees the dynamically allocated memory.
     if (bj_ctx) block_jacobi_free(bj_ctx);
+    if (mg_ctx) multigrid_free(mg_ctx); 
     if (id_ctx) identity_free(id_ctx);
     free(rel_res);
     free(b);

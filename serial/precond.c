@@ -2,6 +2,7 @@
 #include <string.h>
 #include <math.h>
 #include "precond.h"
+#include "multigrid.h"
 
 
 
@@ -96,5 +97,44 @@ void block_jacobi_free(BlockJacobiCtx *ctx)
 {
     free(ctx->d);
     free(ctx->l);
+    free(ctx);
+}
+
+/* ------------------------------------------------------------------ */
+/* This section is for the Multigrid preconditioner                                            */
+/* ------------------------------------------------------------------ */
+
+//This function sets up the multigrid preconditioner context, which just stores the parameters needed for the V-cycle. The actual multigrid 
+//data structures (grids, operators, etc.) are managed internally by the vcycle function.
+MultigridCtx *multigrid_setup(int n_int, int nu1, int nu2, double omega)
+{
+    //Here we allocate memory
+    MultigridCtx *ctx = malloc(sizeof(MultigridCtx));
+    ctx->n_int = n_int; //This just sets the number of interior grid points per direction on the fine grid.
+    ctx->h     = 1.0 / (n_int + 1); //This is the grid spacing
+    ctx->nu1   = nu1; //This is the number of pre-smoothing steps
+    ctx->nu2   = nu2; //This is the number of post-smoothing steps
+    ctx->omega = omega; //This is the Jacobi damping weight for the smoother
+    return ctx;
+}
+
+//This function applies the multigrid preconditioner by calling the vcycle function. We pass in the parameters from the context, and we use a
+// zero initial guess for the V-cycle since the preconditioner should be linear. The vcycle function will perform the multigrid V-cycle
+// and return the result in z.
+void multigrid_apply(double *z, const double *r, void *ctx)
+{
+    MultigridCtx *mg = (MultigridCtx *)ctx; //We cast the context to the correct type to access the parameters.
+    int N = mg->n_int * mg->n_int; //This is the total number of interior grid points.
+
+    //Our initial guess for the V-cycle is zero.
+    memset(z, 0, N * sizeof(double));
+
+    //Here we call the V-cycle function, which applies the multigrid preconditioner. 
+    vcycle(mg->n_int, mg->h, mg->omega, mg->nu1, mg->nu2, z, r);
+}
+
+//This just frees the dynamically allocated memory.
+void multigrid_free(MultigridCtx *ctx)
+{
     free(ctx);
 }
