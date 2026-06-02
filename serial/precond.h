@@ -74,11 +74,12 @@ typedef struct {
     int    nu1;     //No. of pre-smoothing steps
     int    nu2;     //No. of post-smoothing steps
     double omega;   //Jacobi damping weight
+    SmootherFn smoother; //Pointer to the smoother function to use in the V-cycle
 } MultigridCtx;
 
 //Function prototypes for the multigrid preconditioner setup, apply, and free functions.
-MultigridCtx *multigrid_setup(int n_int, int nu1, int nu2, double omega);
-void          multigrid_apply(double *z, const double *r, void *ctx);
-void          multigrid_free(MultigridCtx *ctx);
+MultigridCtx *multigrid_setup(int n_int, int nu1, int nu2, double omega, SmootherFn smoother);
+void multigrid_apply(double *z, const double *r, void *ctx);
+void multigrid_free(MultigridCtx *ctx);
 
 #endif /* PRECOND_H */

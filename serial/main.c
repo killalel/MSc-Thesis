@@ -8,6 +8,7 @@
 #include "linalg.h"
 #include "precond.h"
 #include "pcg.h"
+#include "multigrid.h"
 
 //This is our main file for the serial implementation of the PCG solver for the 2D Poisson problem. It parses command line arguments for 
 //the grid size, tolerance, maximum iterations, and preconditioner choice, then sets up the problem, calls the PCG solver, and reports the
@@ -17,7 +18,7 @@
 //This function just prints the usage message for the program, which is called if the user provides invalid arguments.
 static void print_usage(const char *prog)
 {
-    fprintf(stderr, "Usage: %s <n_int> [tol] [max_iter] [precond: blockjacobi|multigrid|none]\n", prog);
+    fprintf(stderr, "Usage: %s <n_int> [tol] [max_iter] [precond: blockjacobi|multigrid|multigrid_gs|multigrid_rb|multigrid_cheb|multigrid_sor|none]\n", prog);
 }
 
 //Here is our main
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
     double tol = (argc >= 3) ? atof(argv[2]) : 1e-8;
     //This is the maximum number of iterations for the PCG solver. It defaults to 10*n_int^2 if not provided.
     int max_iter = (argc >= 4) ? atoi(argv[3]) : 10 * n_int * n_int;
-    //This is the choice of preconditioner, which can be "blockjacobi" or "none" (for unpreconditioned CG). It defaults to 
+    //This is the choice of preconditioner, which can be "blockjacobi", "multigrid", "multigrid_gs", "multigrid_rb", "multigrid_cheb", "multigrid_sor", or "none" (for unpreconditioned CG). It defaults to 
     //"blockjacobi" if not provided.
     char *precond_name = (argc >= 5) ? argv[4] : "blockjacobi";
 
@@ -67,7 +68,7 @@ int main(int argc, char **argv)
     void *precond_ctx;
     BlockJacobiCtx *bj_ctx  = NULL;
     IdentityCtx *id_ctx  = NULL;
-    MultigridCtx   *mg_ctx = NULL;
+    MultigridCtx *mg_ctx = NULL;
 
     //This is for timing the program.
     clock_t setup_start = clock(); 
@@ -78,7 +79,23 @@ int main(int argc, char **argv)
         precond_apply = block_jacobi_apply;
         precond_ctx = bj_ctx;
     } else if (strcmp(precond_name, "multigrid") == 0) {
-        mg_ctx = multigrid_setup(n_int, 2, 2, 2.0/3.0);
+        mg_ctx = multigrid_setup(n_int, 2, 2, 2.0/3.0, wj_smooth);
+        precond_apply = multigrid_apply;
+        precond_ctx = mg_ctx;
+    } else if (strcmp(precond_name, "multigrid_gs") == 0) {   
+        mg_ctx = multigrid_setup(n_int, 2, 2, 1.0, gs_smooth);
+        precond_apply = multigrid_apply;
+        precond_ctx = mg_ctx;
+    }  else if (strcmp(precond_name, "multigrid_rb") == 0) {
+        mg_ctx = multigrid_setup(n_int, 2, 2, 1.0, rb_smooth);
+        precond_apply = multigrid_apply;
+        precond_ctx = mg_ctx;
+    } else if (strcmp(precond_name, "multigrid_cheb") == 0) {
+        mg_ctx = multigrid_setup(n_int, 2, 2, 1.0, cheb_smooth);
+        precond_apply = multigrid_apply;
+        precond_ctx = mg_ctx;
+    } else if (strcmp(precond_name, "multigrid_sor") == 0) {
+        mg_ctx = multigrid_setup(n_int, 2, 2, 1.6, sor_smooth);
         precond_apply = multigrid_apply;
         precond_ctx = mg_ctx;
     } else if (strcmp(precond_name, "none") == 0) {

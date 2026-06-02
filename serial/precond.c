@@ -106,15 +106,16 @@ void block_jacobi_free(BlockJacobiCtx *ctx)
 
 //This function sets up the multigrid preconditioner context, which just stores the parameters needed for the V-cycle. The actual multigrid 
 //data structures (grids, operators, etc.) are managed internally by the vcycle function.
-MultigridCtx *multigrid_setup(int n_int, int nu1, int nu2, double omega)
+MultigridCtx *multigrid_setup(int n_int, int nu1, int nu2, double omega, SmootherFn smoother)
 {
     //Here we allocate memory
     MultigridCtx *ctx = malloc(sizeof(MultigridCtx));
     ctx->n_int = n_int; //This just sets the number of interior grid points per direction on the fine grid.
-    ctx->h     = 1.0 / (n_int + 1); //This is the grid spacing
-    ctx->nu1   = nu1; //This is the number of pre-smoothing steps
-    ctx->nu2   = nu2; //This is the number of post-smoothing steps
+    ctx->h  = 1.0 / (n_int + 1); //This is the grid spacing
+    ctx->nu1 = nu1; //This is the number of pre-smoothing steps
+    ctx->nu2 = nu2; //This is the number of post-smoothing steps
     ctx->omega = omega; //This is the Jacobi damping weight for the smoother
+    ctx->smoother = smoother; //This is the pointer to the smoother function
     return ctx;
 }
 
@@ -130,7 +131,7 @@ void multigrid_apply(double *z, const double *r, void *ctx)
     memset(z, 0, N * sizeof(double));
 
     //Here we call the V-cycle function, which applies the multigrid preconditioner. 
-    vcycle(mg->n_int, mg->h, mg->omega, mg->nu1, mg->nu2, z, r);
+    vcycle(mg->n_int, mg->h, mg->omega, mg->nu1, mg->nu2, mg->smoother, z, r);
 }
 
 //This just frees the dynamically allocated memory.

@@ -46,6 +46,237 @@ void wj_smooth(int n_int, double h, double omega, int nu,
     free(Au);
 }
 
+
+/* ------------------------------------------------------------------ */
+/* Gauss-Seidel Smoother                                           */
+/* ------------------------------------------------------------------ */
+void gs_smooth(int n_int, double h, double omega, int nu, double *u, const double *f)
+{
+    //We don't actually need an omega parameter for Gauss-Seidel, but we include it in the function signature to match the SmootherFn type and 
+    //allow for easy switching between smoothers.
+    (void)omega;
+
+    //This is just h^2.
+    double h2 = h * h;
+
+    //This loop does our Gauss-Seidel forward and backward sweeps.
+    for (int sweep = 0; sweep < nu; sweep++) {
+
+        // Forward pass: i = 0..n_int-1, j = 0..n_int-1 
+        for (int i = 0; i < n_int; i++) {
+            for (int j = 0; j < n_int; j++) {
+                double nb = 0.0;
+                if (i > 0) nb += u[(i-1)*n_int + j];
+                if (i < n_int - 1)  nb += u[(i+1)*n_int + j];
+                if (j > 0) nb += u[i*n_int + (j-1)];
+                if (j < n_int - 1)  nb += u[i*n_int + (j+1)];
+                u[i*n_int + j] = (h2 * f[i*n_int + j] + nb) / 4.0;
+            }
+        }
+
+        // Backward pass: i = n_int-1..0, j = n_int-1..0 
+        for (int i = n_int - 1; i >= 0; i--) {
+            for (int j = n_int - 1; j >= 0; j--) {
+                double nb = 0.0;
+                if (i > 0) nb += u[(i-1)*n_int + j];
+                if (i < n_int - 1)  nb += u[(i+1)*n_int + j];
+                if (j > 0) nb += u[i*n_int + (j-1)];
+                if (j < n_int - 1)  nb += u[i*n_int + (j+1)];
+                u[i*n_int + j] = (h2 * f[i*n_int + j] + nb) / 4.0;
+            }
+        }
+    }
+}
+
+
+/* ------------------------------------------------------------------ */
+/* Smoother: Red-Black Gauss-Seidel                                    */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Symmetric Red-Black Gauss-Seidel smoother for A*u = f.
+ *
+ * Grid points are coloured like a checkerboard:
+ *   Red   if (i+j) % 2 == 0
+ *   Black if (i+j) % 2 == 1
+ *
+ * Each of the nu sweeps consists of:
+ *   Forward:  update all RED   → update all BLACK
+ *   Backward: update all BLACK → update all RED
+ */
+void rb_smooth(int n_int, double h, double omega, int nu, double *u, const double *f)
+{
+    //Similarly to the Gauss-Seidel smoother, we don't actually need the omega parameter for the red-black Gauss-Seidel, but we include it in 
+    //the function signature to match the SmootherFn type and allow for easy switching between smoothers.
+    (void)omega;
+
+    //h^2
+    double h2 = h * h;
+
+    //This loop performs nu sweeps of the red-black Gauss-Seidel iteration. Each sweep consists of a forward pass where we first update all the red
+    //points (where (i+j) is even) and then all the black points (where (i+j) is odd), followed by a backward pass where we update the black points
+    // first and then the red points. The updates are done using the 5-point stencil formula for the Poisson problem, similar to the Gauss-Seidel 
+    //smoother.
+    for (int sweep = 0; sweep < nu; sweep++) {
+
+        //Forward pass: RED then BLACK 
+        for (int colour = 0; colour <= 1; colour++) {
+            for (int i = 0; i < n_int; i++) {
+                for (int j = 0; j < n_int; j++) {
+                    if ((i + j) % 2 != colour) continue;
+                    double nb = 0.0;
+                    if (i > 0) nb += u[(i-1)*n_int + j];
+                    if (i < n_int - 1) nb += u[(i+1)*n_int + j];
+                    if (j > 0) nb += u[i*n_int + (j-1)];
+                    if (j < n_int - 1) nb += u[i*n_int + (j+1)];
+                    u[i*n_int + j] = (h2 * f[i*n_int + j] + nb) / 4.0;
+                }
+            }
+        }
+
+        //Backward: BLACK then RED
+        for (int colour = 1; colour >= 0; colour--) {
+            for (int i = n_int - 1; i >= 0; i--) {
+                for (int j = n_int - 1; j >= 0; j--) {
+                    if ((i + j) % 2 != colour) continue;
+                    double nb = 0.0;
+                    if (i > 0) nb += u[(i-1)*n_int + j];
+                    if (i < n_int - 1) nb += u[(i+1)*n_int + j];
+                    if (j > 0) nb += u[i*n_int + (j-1)];
+                    if (j < n_int - 1) nb += u[i*n_int + (j+1)];
+                    u[i*n_int + j] = (h2 * f[i*n_int + j] + nb) / 4.0;
+                }
+            }
+        }
+    }
+}
+
+
+/* ------------------------------------------------------------------ */
+/* Chebyshev Smoother                                                */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Chebyshev polynomial smoother for A*u = f.
+ *
+ * Uses a non-stationary three-term recurrence to optimally damp the
+ * high-frequency error components over the interval [alpha, beta].
+ *
+ * Requires two extra work vectors (u_prev and d) of length N.
+ */
+void cheb_smooth(int n_int, double h, double omega, int nu, double *u, const double *f)
+{
+    (void)omega;
+
+    int N = n_int * n_int;
+    double h2 = h * h;
+    double beta = 8.0 / h2;             //Spectral radius of A          
+    double alpha = beta / 3.0;           //Target upper 2/3 of spectrum 
+    double theta = (beta + alpha) / 2.0; //Centre of target interval
+    double delta = (beta - alpha) / 2.0; //Half-width of target interval
+    double diag = 4.0 / h2;             //Diagonal of A 
+
+    //Dynamically allocate memory for vectors
+    double *r      = malloc(N * sizeof(double));
+    double *u_prev = malloc(N * sizeof(double));
+
+    //Initialise rho_prev to 1.
+    double rho_prev = 1.0;
+
+    //This loop performs the chebyshev smoother.
+    for (int k = 1; k <= nu; k++) {
+
+        // r = f - A*u 
+        matvec_poisson2d(n_int, h, u, r);
+        for (int i = 0; i < N; i++)
+            r[i] = f[i] - r[i];
+
+        //This is the case where k=1, where we just do a scaled Jacobi update. For k > 1, we use the three-term recurrence to compute the new
+        // iterate.
+        if (k == 1) {
+            // First step: u = u + (1/theta) * D^{-1} * r 
+            double s = 1.0 / (theta * diag);
+            for (int i = 0; i < N; i++) {
+                u_prev[i] = u[i];
+                u[i]     += s * r[i];
+            }
+            rho_prev = 1.0;
+        } else {
+            // rho_k = 1 / (2*theta/delta - rho_{k-1})
+            double rho_k = 1.0 / (2.0 * theta / delta - rho_prev);
+
+            // u_new = rho_k * (2/delta * D^{-1} * r + u - u_prev) + u_prev
+            double s = (2.0 / delta) / diag;
+            for (int i = 0; i < N; i++) {
+                double u_new = rho_k * (s * r[i] + u[i] - u_prev[i]) + u_prev[i];
+                u_prev[i]   = u[i];
+                u[i]        = u_new;
+            }
+            rho_prev = rho_k;
+        }
+    }
+
+    //Free the dynamically allocated memory.
+    free(r);
+    free(u_prev);
+}
+
+/* ------------------------------------------------------------------ */
+/* Successive Over-Relaxation (SOR) Smoother                          */
+/* ------------------------------------------------------------------ */
+//This is our function for the SSOR smoother, which is very similar to the Gauss-Seidel smoother but includes a damping weight omega and performs
+// a forward sweep followed by a backward sweep in each iteration.
+void sor_smooth(int n_int, double h, double omega, int nu, double *u, const double *f)
+{
+    //h^2
+    double h2 = h * h;
+
+    //We do nu loops.
+    for (int sweep = 0; sweep < nu; sweep++) {
+
+        // Forward sweep 
+        for (int i = 0; i < n_int; i++) {
+            for (int j = 0; j < n_int; j++) {
+
+                int idx = i * n_int + j;
+
+                double nb = 0.0;
+
+                if (i > 0)           nb += u[(i-1)*n_int + j];
+                if (i < n_int - 1)   nb += u[(i+1)*n_int + j];
+                if (j > 0)           nb += u[i*n_int + (j-1)];
+                if (j < n_int - 1)   nb += u[i*n_int + (j+1)];
+
+                double gs =
+                    (h2 * f[idx] + nb) / 4.0;
+
+                u[idx] =
+                    (1.0 - omega) * u[idx]
+                    + omega * gs;
+            }
+        }
+
+        // Backward sweep 
+        for (int i = n_int - 1; i >= 0; i--) {
+            for (int j = n_int - 1; j >= 0; j--) {
+
+                int idx = i * n_int + j;
+
+                double nb = 0.0;
+
+                if (i > 0) nb += u[(i-1)*n_int + j];
+                if (i < n_int - 1) nb += u[(i+1)*n_int + j];
+                if (j > 0) nb += u[i*n_int + (j-1)];
+                if (j < n_int - 1) nb += u[i*n_int + (j+1)];
+
+                double gs = (h2 * f[idx] + nb) / 4.0;
+
+                u[idx] = (1.0 - omega) * u[idx] + omega * gs;
+            }
+        }
+    }
+}
+
 /* ------------------------------------------------------------------ */
 /* This is the restriction section with full-weighting                                         */
 /* ------------------------------------------------------------------ */
@@ -166,7 +397,7 @@ void prolongate2d(int n_coarse, const double *coarse, int n_fine, double *fine)
  *   5. Prolongate:   u += P * u_c
  *   6. Post-smooth:  smooth(nu2 steps)
  */
-void vcycle(int n_int, double h, double omega, int nu1, int nu2, double *u, const double *f)
+void vcycle(int n_int, double h, double omega, int nu1, int nu2, SmootherFn smoother, double *u, const double *f)
 {
     // 1x1 grid case, exact solve 
     if (n_int == 1) {
@@ -178,7 +409,7 @@ void vcycle(int n_int, double h, double omega, int nu1, int nu2, double *u, cons
     int N = n_int * n_int;
 
     // 1. Pre-smoothing 
-    wj_smooth(n_int, h, omega, nu1, u, f);
+    smoother(n_int, h, omega, nu1, u, f);
 
     // 2. Compute residual r = f - A*u
     double *r = malloc(N * sizeof(double));
@@ -197,13 +428,13 @@ void vcycle(int n_int, double h, double omega, int nu1, int nu2, double *u, cons
     restrict2d(n_int, r, r_coarse);
 
     // 4. Recursive V-cycle on coarse grid
-    vcycle(n_coarse, h_coarse, omega, nu1, nu2, u_coarse, r_coarse);
+    vcycle(n_coarse, h_coarse, omega, nu1, nu2, smoother, u_coarse, r_coarse);
 
     // 5. Prolongate coarse correction and add to fine grid solution
     prolongate2d(n_coarse, u_coarse, n_int, u);
 
     // 6. Post-smoothing
-    wj_smooth(n_int, h, omega, nu2, u, f);
+    smoother(n_int, h, omega, nu2, u, f);
 
     //Free dyncamically allocated memory for the residual and coarse grid vectors.
     free(r);
