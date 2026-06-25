@@ -1,0 +1,283 @@
+rm -f main.o decomp.o poisson2d_original.o linalg.o precond.o pcg.o multigrid.o pcg_solver
+mpicc -O2 -Wall -Wextra -std=c11 -c -o main.o main.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o decomp.o decomp.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o linalg.o linalg.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o precond.o precond.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o pcg.o pcg.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o multigrid.o multigrid.c
+mpicc -O2 -Wall -Wextra -std=c11 -o pcg_solver main.o decomp.o poisson2d_dipole.o linalg.o precond.o pcg.o multigrid.o -lm
+--- 1 ranks, n=1023, dipole, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+Note: no analytic solution available for dipole problem.
+Verify correctness via grid convergence study.
+
+PCG converged in 8 iterations.
+Final relative residual: 4.346607e-09
+
+Max pointwise error vs analytic solution: -1.000000e+00
+
+Setup time:  0.000932 s
+Solve time:  0.372244 s
+Total time:  0.373176 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.574521e-01
+       2  |  3.071027e-02
+       3  |  5.890965e-03
+       4  |  5.338549e-04
+       5  |  1.646880e-05
+       6  |  1.451089e-06
+       7  |  1.353267e-07
+       8  |  4.346607e-09
+--- 2 ranks, n=1023, dipole, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+Note: no analytic solution available for dipole problem.
+Verify correctness via grid convergence study.
+
+PCG converged in 8 iterations.
+Final relative residual: 4.346607e-09
+
+Max pointwise error vs analytic solution: -1.000000e+00
+
+Setup time:  0.001576 s
+Solve time:  0.213873 s
+Total time:  0.215448 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.574521e-01
+       2  |  3.071027e-02
+       3  |  5.890965e-03
+       4  |  5.338549e-04
+       5  |  1.646880e-05
+       6  |  1.451089e-06
+       7  |  1.353267e-07
+       8  |  4.346607e-09
+--- 4 ranks, n=1023, dipole, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+Note: no analytic solution available for dipole problem.
+Verify correctness via grid convergence study.
+
+PCG converged in 10 iterations.
+Final relative residual: 8.635904e-10
+
+Max pointwise error vs analytic solution: -1.000000e+00
+
+Setup time:  0.002271 s
+Solve time:  0.115668 s
+Total time:  0.117939 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.359221e-01
+       2  |  1.688236e-01
+       3  |  2.901385e-02
+       4  |  6.846154e-03
+       5  |  4.807536e-04
+       6  |  3.053700e-05
+       7  |  2.540499e-06
+       8  |  1.789795e-07
+       9  |  1.176525e-08
+      10  |  8.635904e-10
+--- 8 ranks, n=1023, dipole, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+Note: no analytic solution available for dipole problem.
+Verify correctness via grid convergence study.
+
+PCG converged in 11 iterations.
+Final relative residual: 1.970018e-09
+
+Max pointwise error vs analytic solution: -1.000000e+00
+
+Setup time:  0.003810 s
+Solve time:  0.072966 s
+Total time:  0.076775 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.654918e-01
+       2  |  3.255165e-01
+       3  |  6.261027e-02
+       4  |  1.407953e-02
+       5  |  1.311785e-03
+       6  |  1.446790e-04
+       7  |  1.855517e-05
+       8  |  1.924315e-06
+       9  |  1.453970e-07
+      10  |  1.386896e-08
+      11  |  1.970018e-09
+--- 16 ranks, n=1023, dipole, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+Note: no analytic solution available for dipole problem.
+Verify correctness via grid convergence study.
+
+PCG converged in 12 iterations.
+Final relative residual: 2.279333e-09
+
+Max pointwise error vs analytic solution: -1.000000e+00
+
+Setup time:  0.003472 s
+Solve time:  0.047843 s
+Total time:  0.051315 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  8.174910e+00
+       2  |  1.171726e+00
+       3  |  2.275075e-01
+       4  |  3.497333e-02
+       5  |  7.381949e-03
+       6  |  9.193135e-04
+       7  |  1.678969e-04
+       8  |  1.549720e-05
+       9  |  1.286869e-06
+      10  |  1.795031e-07
+      11  |  2.832205e-08
+      12  |  2.279333e-09
+
+
+###############################################################################
+TCHPC Cluster: seagull
+Job 43790 (mpi_dipole_scale) for User 'killalel' in Account 'mschpc'
+Finished at: Wed Jun 24 16:14:12 IST 2026
+
+Job efficiency estimates:
+=========================
+
+
+
+Job completion status:
+======================
+
+JobID           JobName AllocCPUS NTasks NNodes     MaxRSS    MaxRSSNode  MaxDiskRead MaxDiskWrite    Elapsed      State ExitCode 
+------------ ---------- --------- ------ ------ ---------- ------------- ------------ ------------ ---------- ---------- -------- 
+43790        mpi_dipol+        16             1                                                      00:00:00    RUNNING      0:0 
+43790.batch       batch        16      1      1     54528K  seagull-n012            0        0.00M   00:00:09  COMPLETED      0:0 
+43790.extern     extern        16      1      1                                                      00:00:00    RUNNING      0:0 
+43790.0      hydra_bst+        16      1      1    142044K  seagull-n012            0        0.00M   00:00:05  COMPLETED      0:0 
+43790.1      hydra_bst+        16      1      1    237672K  seagull-n012            0        0.00M   00:00:06  COMPLETED      0:0 
+43790.2      hydra_bst+        16      1      1    397284K  seagull-n012            0        0.00M   00:00:07  COMPLETED      0:0 
+43790.3      hydra_bst+        16      1      1    729704K  seagull-n012            0        0.00M   00:00:08  COMPLETED      0:0 
+43790.4      hydra_bst+        16      1      1   1374344K  seagull-n012            0        0.00M   00:00:09  COMPLETED      0:0 
+
+
+Job details:
+============
+
+JobId=43790 JobName=mpi_dipole_scale
+   SLUID=sD89KVX355R300
+   UserId=killalel(2215) GroupId=killalel(2147) MCS_label=N/A
+   Priority=247857 Nice=0 Account=mschpc QOS=normal
+   JobState=COMPLETING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:00:09 TimeLimit=00:10:00 TimeMin=N/A
+   SubmitTime=2026-06-24T16:14:03 EligibleTime=2026-06-24T16:14:03
+   AccrueTime=2026-06-24T16:14:03
+   StartTime=2026-06-24T16:14:03 EndTime=2026-06-24T16:14:12 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-06-24T16:14:03 Scheduler=Main
+   Partition=compute AllocNode:Sid=seagull01:461037
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=seagull-n012
+   BatchHost=seagull-n012
+   NumNodes=1 NumCPUs=16 NumTasks=16 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=16,mem=63000M,node=1,billing=16
+   AllocTRES=cpu=16,mem=63000M,node=1,billing=16
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   JOB_GRES=(null)
+     Nodes=seagull-n012 CPU_IDs=0-15 Mem=63000 GRES=
+   MinCPUsNode=1 MinMemoryNode=63000M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/users/mschpc/2025/killalel/MPIv3/mpi_dipole_scale.sh
+   SubmitLine=sbatch mpi_dipole_scale.sh
+   WorkDir=/home/users/mschpc/2025/killalel/MPIv3
+   StdErr=/home/users/mschpc/2025/killalel/MPIv3/dipole_scaling_1023.err
+   StdIn=/dev/null
+   StdOut=/home/users/mschpc/2025/killalel/MPIv3/dipole_scaling_1023.out
+
+
+SLURM Bank Statement:
+=====================
+
+User           Usage |        Account     Usage | Account Limit Available (CPU hrs)
+---------- --------- + -------------- --------- + ------------- ---------
+ashech             0 |         MSCHPC         8 |        10,000     9,992
+cheny35            0 |         MSCHPC         8 |        10,000     9,992
+chojnace           0 |         MSCHPC         8 |        10,000     9,992
+czhang4            0 |         MSCHPC         8 |        10,000     9,992
+ecurry             1 |         MSCHPC         8 |        10,000     9,992
+fugu               0 |         MSCHPC         8 |        10,000     9,992
+killalel           1 |         MSCHPC         8 |        10,000     9,992
+knightsk           0 |         MSCHPC         8 |        10,000     9,992
+lanem2             1 |         MSCHPC         8 |        10,000     9,992
+mcleodco           0 |         MSCHPC         8 |        10,000     9,992
+mli7               0 |         MSCHPC         8 |        10,000     9,992
+ofarrepa           5 |         MSCHPC         8 |        10,000     9,992
+prasannp           0 |         MSCHPC         8 |        10,000     9,992
+sheriddy           0 |         MSCHPC         8 |        10,000     9,992
+srajendr           0 |         MSCHPC         8 |        10,000     9,992
+szhang2            0 |         MSCHPC         8 |        10,000     9,992
+vacariem           0 |         MSCHPC         8 |        10,000     9,992
+xiangyu            0 |         MSCHPC         8 |        10,000     9,992
+xniu               0 |         MSCHPC         8 |        10,000     9,992
+yangmi             0 |         MSCHPC         8 |        10,000     9,992
+yaoco              0 |         MSCHPC         8 |        10,000     9,992
+
+
+Acknowledgements:
+=================
+
+Note that usage of TCHPC Resources *must* be acknowledged in all publications.
+
+Please see this page for details relevant to this cluster:
+
+http://www.tchpc.tcd.ie/resources/acknowledgementpolicy
+
+################################################################################

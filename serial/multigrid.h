@@ -17,6 +17,8 @@ void cheb_smooth(int n_int, double h, double omega, int nu, double *u, const dou
 
 void sor_smooth(int n_int, double h, double omega, int nu, double *u, const double *f);
 
+void pci_smooth(int n_int, double h, double omega, int nu, double *u, const double *f);
+
 void restrict2d(int n_fine, const double *fine, double *coarse);
  
 

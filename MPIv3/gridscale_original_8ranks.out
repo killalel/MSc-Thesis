@@ -1,0 +1,334 @@
+rm -f main.o decomp.o poisson2d_original.o linalg.o precond.o pcg.o multigrid.o pcg_solver
+mpicc -O2 -Wall -Wextra -std=c11 -c -o main.o main.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o decomp.o decomp.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o poisson2d_original.o poisson2d_original.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o linalg.o linalg.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o precond.o precond.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o pcg.o pcg.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o multigrid.o multigrid.c
+mpicc -O2 -Wall -Wextra -std=c11 -o pcg_solver main.o decomp.o poisson2d_original.o linalg.o precond.o pcg.o multigrid.o -lm
+--- 8 ranks, n=63, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 5.368859e-09
+
+Max pointwise error vs analytic solution: 8.925571e-06
+
+Setup time:  0.002907 s
+Solve time:  0.002483 s
+Total time:  0.005389 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.097360e-02
+       2  |  1.033181e-02
+       3  |  1.139201e-03
+       4  |  8.579985e-05
+       5  |  8.785328e-06
+       6  |  1.042509e-06
+       7  |  7.389114e-08
+       8  |  5.368859e-09
+--- 8 ranks, n=127, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 6.492084e-09
+
+Max pointwise error vs analytic solution: 2.230732e-06
+
+Setup time:  0.002671 s
+Solve time:  0.003172 s
+Total time:  0.005843 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.641860e-02
+       2  |  7.486081e-03
+       3  |  1.021007e-03
+       4  |  7.236108e-05
+       5  |  8.163823e-06
+       6  |  1.038321e-06
+       7  |  7.701556e-08
+       8  |  6.492084e-09
+--- 8 ranks, n=255, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 7.482371e-09
+
+Max pointwise error vs analytic solution: 5.549949e-07
+
+Setup time:  0.003065 s
+Solve time:  0.005669 s
+Total time:  0.008734 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.399944e-02
+       2  |  5.674352e-03
+       3  |  8.869407e-04
+       4  |  6.058936e-05
+       5  |  7.568319e-06
+       6  |  9.982506e-07
+       7  |  8.008168e-08
+       8  |  7.482371e-09
+--- 8 ranks, n=511, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 8.416375e-09
+
+Max pointwise error vs analytic solution: 1.339954e-07
+
+Setup time:  0.003151 s
+Solve time:  0.015373 s
+Total time:  0.018523 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.276356e-02
+       2  |  4.659808e-03
+       3  |  7.221464e-04
+       4  |  5.179845e-05
+       5  |  7.071151e-06
+       6  |  9.432160e-07
+       7  |  8.234592e-08
+       8  |  8.416375e-09
+--- 8 ranks, n=1023, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 9.282537e-09
+
+Max pointwise error vs analytic solution: 5.600931e-08
+
+Setup time:  0.003271 s
+Solve time:  0.054843 s
+Total time:  0.058114 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.214742e-02
+       2  |  4.137822e-03
+       3  |  5.407055e-04
+       4  |  4.610190e-05
+       5  |  6.716233e-06
+       6  |  8.795835e-07
+       7  |  8.291879e-08
+       8  |  9.282537e-09
+--- 8 ranks, n=2047, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 9.973137e-09
+
+Max pointwise error vs analytic solution: 6.291963e-08
+
+Setup time:  0.003387 s
+Solve time:  0.301188 s
+Total time:  0.304575 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.184455e-02
+       2  |  3.878793e-03
+       3  |  3.759442e-04
+       4  |  4.289443e-05
+       5  |  6.510098e-06
+       6  |  8.063158e-07
+       7  |  8.256999e-08
+       8  |  9.973137e-09
+--- 8 ranks, n=4095, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 9 iterations.
+Final relative residual: 1.325096e-09
+
+Max pointwise error vs analytic solution: 1.096650e-08
+
+Setup time:  0.003053 s
+Solve time:  1.190382 s
+Total time:  1.193435 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.169686e-02
+       2  |  3.750982e-03
+       3  |  2.514562e-04
+       4  |  4.129424e-05
+       5  |  6.435150e-06
+       6  |  7.233618e-07
+       7  |  8.230449e-08
+       8  |  1.048437e-08
+       9  |  1.325096e-09
+
+
+###############################################################################
+TCHPC Cluster: seagull
+Job 43665 (mpi_gridscale) for User 'killalel' in Account 'mschpc'
+Finished at: Tue Jun 16 14:18:46 IST 2026
+
+Job efficiency estimates:
+=========================
+
+Job ID: 43665
+Cluster: seagull
+User/Group: killalel/killalel
+State: RUNNING
+Nodes: 1
+Cores per node: 8
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:00:00 core-walltime
+Job Wall-clock time: 00:00:00
+Memory Utilized: 0.00 MB
+Memory Efficiency: 0.00% of 61.52 GB (61.52 GB/node)
+WARNING: Efficiency statistics can only be obtained after the job has ended as seff tool is based on the accounting database data.
+
+Job completion status:
+======================
+
+JobID           JobName AllocCPUS NTasks NNodes     MaxRSS    MaxRSSNode  MaxDiskRead MaxDiskWrite    Elapsed      State ExitCode 
+------------ ---------- --------- ------ ------ ---------- ------------- ------------ ------------ ---------- ---------- -------- 
+43665        mpi_grids+         8             1                                                      00:00:00    RUNNING      0:0 
+43665.batch       batch         8      1      1     21128K  seagull-n003            0        0.00M   00:00:10  COMPLETED      0:0 
+43665.extern     extern         8      1      1                                                      00:00:00    RUNNING      0:0 
+43665.0      hydra_bst+         8      1      1    654552K  seagull-n003            0        0.00M   00:00:03  COMPLETED      0:0 
+43665.1      hydra_bst+         8      1      1    653180K  seagull-n003            0        0.00M   00:00:04  COMPLETED      0:0 
+43665.2      hydra_bst+         8      1      1    661184K  seagull-n003            0        0.00M   00:00:05  COMPLETED      0:0 
+43665.3      hydra_bst+         8      1      1    669112K  seagull-n003            0        0.00M   00:00:06  COMPLETED      0:0 
+43665.4      hydra_bst+         8      1      1    729616K  seagull-n003            0        0.00M   00:00:07  COMPLETED      0:0 
+43665.5      hydra_bst+         8      1      1    951640K  seagull-n003            0        0.00M   00:00:08  COMPLETED      0:0 
+43665.6      hydra_bst+         8      1      1   1838216K  seagull-n003            0        0.00M   00:00:10  COMPLETED      0:0 
+
+
+Job details:
+============
+
+JobId=43665 JobName=mpi_gridscale
+   SLUID=sD89KV87EFDC00
+   UserId=killalel(2215) GroupId=killalel(2147) MCS_label=N/A
+   Priority=250256 Nice=0 Account=mschpc QOS=normal
+   JobState=COMPLETING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:00:10 TimeLimit=00:10:00 TimeMin=N/A
+   SubmitTime=2026-06-16T13:44:59 EligibleTime=2026-06-16T13:44:59
+   AccrueTime=2026-06-16T13:44:59
+   StartTime=2026-06-16T14:18:36 EndTime=2026-06-16T14:18:46 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-06-16T14:18:36 Scheduler=Backfill
+   Partition=compute AllocNode:Sid=seagull01:1380645
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=seagull-n003
+   BatchHost=seagull-n003
+   NumNodes=1 NumCPUs=8 NumTasks=8 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=63000M,node=1,billing=8
+   AllocTRES=cpu=8,mem=63000M,node=1,billing=8
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   JOB_GRES=(null)
+     Nodes=seagull-n003 CPU_IDs=0-3,8-11 Mem=63000 GRES=
+   MinCPUsNode=1 MinMemoryNode=63000M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/users/mschpc/2025/killalel/MPIv3/mpi_gridscale.sh
+   SubmitLine=sbatch mpi_gridscale.sh
+   WorkDir=/home/users/mschpc/2025/killalel/MPIv3
+   StdErr=/home/users/mschpc/2025/killalel/MPIv3/gridscale_original_8ranks.err
+   StdIn=/dev/null
+   StdOut=/home/users/mschpc/2025/killalel/MPIv3/gridscale_original_8ranks.out
+
+
+SLURM Bank Statement:
+=====================
+
+User           Usage |        Account     Usage | Account Limit Available (CPU hrs)
+---------- --------- + -------------- --------- + ------------- ---------
+ashech             0 |         MSCHPC        12 |        10,000     9,988
+cheny35            0 |         MSCHPC        12 |        10,000     9,988
+chojnace           1 |         MSCHPC        12 |        10,000     9,988
+czhang4            0 |         MSCHPC        12 |        10,000     9,988
+ecurry             1 |         MSCHPC        12 |        10,000     9,988
+fugu               0 |         MSCHPC        12 |        10,000     9,988
+killalel           2 |         MSCHPC        12 |        10,000     9,988
+knightsk           0 |         MSCHPC        12 |        10,000     9,988
+lanem2             1 |         MSCHPC        12 |        10,000     9,988
+mcleodco           0 |         MSCHPC        12 |        10,000     9,988
+mli7               0 |         MSCHPC        12 |        10,000     9,988
+ofarrepa           7 |         MSCHPC        12 |        10,000     9,988
+prasannp           0 |         MSCHPC        12 |        10,000     9,988
+sheriddy           0 |         MSCHPC        12 |        10,000     9,988
+srajendr           0 |         MSCHPC        12 |        10,000     9,988
+szhang2            0 |         MSCHPC        12 |        10,000     9,988
+vacariem           0 |         MSCHPC        12 |        10,000     9,988
+xiangyu            0 |         MSCHPC        12 |        10,000     9,988
+xniu               0 |         MSCHPC        12 |        10,000     9,988
+yangmi             0 |         MSCHPC        12 |        10,000     9,988
+yaoco              0 |         MSCHPC        12 |        10,000     9,988
+
+
+Acknowledgements:
+=================
+
+Note that usage of TCHPC Resources *must* be acknowledged in all publications.
+
+Please see this page for details relevant to this cluster:
+
+http://www.tchpc.tcd.ie/resources/acknowledgementpolicy
+
+################################################################################

@@ -1,8 +1,12 @@
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "multigrid.h"
 #include "linalg.h"
-
+#include "lanczos.h"
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 /*
  * multigrid.c
  *
@@ -19,8 +23,7 @@
 //the smoother (number of steps nu and damping weight omega), and it updates u in place by performing nu sweeps of weighted Jacobi 
 //iteration. The matrix-vector product Au is computed using the matvec_poisson2d function, which applies the 5-point stencil implicitly 
 //without forming the matrix.
-void wj_smooth(int n_int, double h, double omega, int nu,
-            double *u, const double *f)
+void wj_smooth(int n_int, double h, double omega, int nu, double *u, const double *f)
 {
     int N = n_int * n_int; //Number of interior grid points
     double diag  = 4.0 / (h * h); //Diagonal of A.
@@ -276,6 +279,94 @@ void sor_smooth(int n_int, double h, double omega, int nu, double *u, const doub
         }
     }
 }
+
+
+/* ------------------------------------------------------------------ */
+/* Smoother: Preconditioned Chebyshev Iteration (P-CI)                */
+/* ------------------------------------------------------------------ */
+
+
+void pci_smooth(int n_int, double h, double omega, int nu, double *u, const double *f)
+{
+    //Don't need omega, include it in the function signature to match the SmootherFn type and allow for easy switching between smoothers.
+    (void)omega;
+
+    //number of interior points 
+    int N = n_int * n_int;
+    //1/h^2
+    double h2inv = 1.0 / (h * h);
+    //Off-diagonal entries of the 1D block tridiagonal T
+    double sub = -h2inv;
+
+    //Allocating memory  
+    double *td = malloc(n_int * sizeof(double));
+    double *tl = malloc(n_int * sizeof(double));
+
+    //Thomas factorisation of the 1D block tridiagonal T, which is the block Jacobi preconditioner.
+    for (int i = 0; i < n_int; i++) td[i] = 2.0 * h2inv;
+    tl[0] = 0.0;
+    for (int i = 1; i < n_int; i++) {
+        tl[i]  = sub / td[i-1];
+        td[i] -= tl[i] * sub;
+    }
+
+    // Eigenvalue estimates via Lanczos 
+    double lam_min, lam_max;
+    lanczos_eigenvalues(n_int, h, td, tl, 30, &lam_min, &lam_max);
+
+    double d = (lam_max + lam_min) / 2.0;
+    double c = (lam_max - lam_min) / 2.0;
+
+    //Allocate memory for vectors.
+    double *r = malloc(N * sizeof(double));
+    double *z = malloc(N * sizeof(double));
+    double *p = calloc(N, sizeof(double));
+
+    double alpha_prev = 1.0 / d;
+
+    // P-CI iterations 
+    for (int iter = 1; iter <= nu; iter++) {
+
+        // u = u + α_{i-1} * p_{i-1} 
+        for (int k = 0; k < N; k++)
+            u[k] += alpha_prev * p[k];
+
+        // r = f - A*u 
+        matvec_poisson2d(n_int, h, u, r);
+        for (int k = 0; k < N; k++)
+            r[k] = f[k] - r[k];
+
+        // z = M̃^{-1} * r  (Block Jacobi Thomas solve) 
+        for (int blk = 0; blk < n_int; blk++) {
+            const double *rb = r + blk * n_int;
+            double *zb = z + blk * n_int;
+            zb[0] = rb[0];
+            for (int i = 1; i < n_int; i++)
+                zb[i] = rb[i] - tl[i] * zb[i-1];
+            zb[n_int-1] /= td[n_int-1];
+            for (int i = n_int-2; i >= 0; i--)
+                zb[i] = (zb[i] - sub * zb[i+1]) / td[i];
+        }
+
+        // β and α update 
+        double beta  = (iter == 1) ? 0.0 : (alpha_prev * c / 2.0) * (alpha_prev * c / 2.0);
+        double alpha = (iter == 1) ? alpha_prev : 1.0 / (d - beta / alpha_prev);
+
+        // p = z + β * p 
+        for (int k = 0; k < N; k++)
+            p[k] = z[k] + beta * p[k];
+
+        alpha_prev = alpha;
+    }
+
+    // Final update
+    for (int k = 0; k < N; k++)
+        u[k] += alpha_prev * p[k];
+
+    free(td); free(tl);
+    free(r);  free(z);  free(p);
+}
+
 
 /* ------------------------------------------------------------------ */
 /* This is the restriction section with full-weighting                                         */

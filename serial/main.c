@@ -18,7 +18,7 @@
 //This function just prints the usage message for the program, which is called if the user provides invalid arguments.
 static void print_usage(const char *prog)
 {
-    fprintf(stderr, "Usage: %s <n_int> [tol] [max_iter] [precond: blockjacobi|multigrid|multigrid_gs|multigrid_rb|multigrid_cheb|multigrid_sor|none]\n", prog);
+    fprintf(stderr, "Usage: %s <n_int> [tol] [max_iter] [precond: blockjacobi|multigrid|multigrid_gs|multigrid_rb|multigrid_cheb|multigrid_sor|multigrid_pci|none]\n", prog);
 }
 
 //Here is our main
@@ -95,7 +95,11 @@ int main(int argc, char **argv)
         precond_apply = multigrid_apply;
         precond_ctx = mg_ctx;
     } else if (strcmp(precond_name, "multigrid_sor") == 0) {
-        mg_ctx = multigrid_setup(n_int, 2, 2, 1.6, sor_smooth);
+        mg_ctx = multigrid_setup(n_int, 2, 2, 1.3, sor_smooth);
+        precond_apply = multigrid_apply;
+        precond_ctx = mg_ctx;
+    } else if (strcmp(precond_name, "multigrid_pci") == 0) {
+        mg_ctx = multigrid_setup(n_int, 2, 2, 1.0, pci_smooth);
         precond_apply = multigrid_apply;
         precond_ctx = mg_ctx;
     } else if (strcmp(precond_name, "none") == 0) {
