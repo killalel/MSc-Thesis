@@ -1,0 +1,24 @@
+[2026-06-30T17:12:39.290] error: Detected 1 oom_kill event in StepId=43915.25. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:14:03.517] error: Detected 1 oom_kill event in StepId=43915.35. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:15:13.014] error: Detected 1 oom_kill event in StepId=43915.45. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:18:58.950] error: Detected 1 oom_kill event in StepId=43915.71. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:20:28.881] error: Detected 1 oom_kill event in StepId=43915.81. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:21:35.439] error: Detected 1 oom_kill event in StepId=43915.91. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:24:24.142] error: Detected 1 oom_kill event in StepId=43915.117. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:25:29.188] error: Detected 1 oom_kill event in StepId=43915.127. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:26:23.023] error: Detected 1 oom_kill event in StepId=43915.137. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:31:15.622] error: Detected 1 oom_kill event in StepId=43915.163. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:33:23.090] error: Detected 1 oom_kill event in StepId=43915.173. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory
+[2026-06-30T17:34:56.602] error: Detected 1 oom_kill event in StepId=43915.183. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n006: task 0: Out Of Memory

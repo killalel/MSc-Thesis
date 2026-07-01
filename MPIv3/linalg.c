@@ -63,12 +63,12 @@ void halo_exchange(const double *x, int nx, int ny, double *recv_left, double *r
 
     //Pack send buffers.
     for (int i = 0; i < ny; i++) {
-        send_left[i] = x[i * nx + 0]; // leftmost column
-        send_right[i] = x[i * nx + (nx - 1)]; // rightmost column
+        send_left[i] = x[i * nx + 0];          // leftmost column
+        send_right[i] = x[i * nx + (nx - 1)];   // rightmost column
     }
     for (int j = 0; j < nx; j++) {
-        send_bottom[j] = x[0 * nx + j]; // bottom row
-        send_top[j] = x[(ny - 1) * nx + j]; // top row
+        send_bottom[j] = x[0 * nx + j];          // bottom row
+        send_top[j] = x[(ny - 1) * nx + j];   // top row
     }
 
     //Non-blocking sends and receives in all four directions.

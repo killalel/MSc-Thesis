@@ -53,7 +53,6 @@ BlockJacobiCtx *block_jacobi_setup(const Decomp *d)
     return ctx;
 }
 
-//This function applies the block Jacobi preconditioner to the input vector r, storing the result in z. 
 void block_jacobi_apply(double *z, const double *r, void *ctx)
 {
     BlockJacobiCtx *bj   = (BlockJacobiCtx *)ctx;

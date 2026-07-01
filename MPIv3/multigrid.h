@@ -12,6 +12,10 @@ typedef void (*SmootherFn)(double *u, const double *f, double omega, int nu, con
 // The distributed matvec handles the halo exchange internally.
 void wj_smooth(double *u, const double *f, double omega, int nu, const Decomp *d);
 
+void gs_smooth(double *u, const double *f, double omega, int nu, const Decomp *d);
+void rb_smooth(double *u, const double *f, double omega, int nu, const Decomp *d);
+void sor_smooth(double *u, const double *f, double omega, int nu, const Decomp *d);
+
 // Full-weighting restriction: fine grid residual -> coarse grid.
 // Does a halo exchange on r_fine before applying the 9-point stencil.
 void restrict2d(const double *r_fine, const Decomp *df, double *r_coarse, const Decomp *dc);

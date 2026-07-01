@@ -1,0 +1,4230 @@
+rm -f main.o decomp.o poisson2d_original.o linalg.o precond.o pcg.o multigrid.o pcg_solver
+mpicc -O2 -Wall -Wextra -std=c11 -c -o main.o main.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o decomp.o decomp.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o linalg.o linalg.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o precond.o precond.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o pcg.o pcg.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o multigrid.o multigrid.c
+mpicc -O2 -Wall -Wextra -std=c11 -o pcg_solver main.o decomp.o poisson2d_cavity.o linalg.o precond.o pcg.o multigrid.o -lm
+--- 1 ranks, n=63, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 7 iterations.
+Final relative residual: 1.200659e-09
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.000746 s
+Solve time:  0.001281 s
+Total time:  0.002027 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  9.912256e-02
+       2  |  1.071531e-02
+       3  |  4.692604e-04
+       4  |  2.160125e-05
+       5  |  2.008655e-06
+       6  |  3.285524e-08
+       7  |  1.200659e-09
+--- 1 ranks, n=127, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 7 iterations.
+Final relative residual: 2.175628e-09
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.001190 s
+Solve time:  0.004799 s
+Total time:  0.005989 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.071435e-01
+       2  |  1.635294e-02
+       3  |  9.346949e-04
+       4  |  3.761962e-05
+       5  |  3.887870e-06
+       6  |  1.390434e-07
+       7  |  2.175628e-09
+--- 1 ranks, n=255, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 4.859608e-10
+
+Max pointwise error vs analytic solution: 5.020091e-05
+
+Setup time:  0.001220 s
+Solve time:  0.021727 s
+Total time:  0.022947 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.140731e-01
+       2  |  2.000523e-02
+       3  |  1.929732e-03
+       4  |  6.426196e-05
+       5  |  5.159508e-06
+       6  |  4.023450e-07
+       7  |  1.062372e-08
+       8  |  4.859608e-10
+--- 1 ranks, n=511, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 8.840550e-10
+
+Max pointwise error vs analytic solution: 1.254994e-05
+
+Setup time:  0.001225 s
+Solve time:  0.086548 s
+Total time:  0.087774 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.204350e-01
+       2  |  2.220276e-02
+       3  |  3.304707e-03
+       4  |  1.209707e-04
+       5  |  6.736536e-06
+       6  |  7.588732e-07
+       7  |  2.738130e-08
+       8  |  8.840550e-10
+--- 1 ranks, n=1023, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 2.024229e-09
+
+Max pointwise error vs analytic solution: 3.137468e-06
+
+Setup time:  0.000746 s
+Solve time:  0.368309 s
+Total time:  0.369055 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.264342e-01
+       2  |  2.383654e-02
+       3  |  4.383605e-03
+       4  |  2.712629e-04
+       5  |  9.531472e-06
+       6  |  1.013746e-06
+       7  |  6.801742e-08
+       8  |  2.024229e-09
+--- 1 ranks, n=2047, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 4.395388e-09
+
+Max pointwise error vs analytic solution: 7.843652e-07
+
+Setup time:  0.001288 s
+Solve time:  1.602233 s
+Total time:  1.603521 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.321591e-01
+       2  |  2.530920e-02
+       3  |  5.054071e-03
+       4  |  5.546503e-04
+       5  |  1.608020e-05
+       6  |  1.248354e-06
+       7  |  1.382333e-07
+       8  |  4.395388e-09
+--- 1 ranks, n=4095, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 9 iterations.
+Final relative residual: 3.316055e-10
+
+Max pointwise error vs analytic solution: 1.960915e-07
+
+Setup time:  0.001305 s
+Solve time:  7.990073 s
+Total time:  7.991377 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.376560e-01
+       2  |  2.675426e-02
+       3  |  5.529365e-03
+       4  |  8.470463e-04
+       5  |  3.690078e-05
+       6  |  1.597666e-06
+       7  |  1.962588e-07
+       8  |  1.066108e-08
+       9  |  3.316055e-10
+--- 2 ranks, n=63, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 7 iterations.
+Final relative residual: 1.200659e-09
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.001525 s
+Solve time:  0.001361 s
+Total time:  0.002887 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  9.912256e-02
+       2  |  1.071531e-02
+       3  |  4.692604e-04
+       4  |  2.160125e-05
+       5  |  2.008655e-06
+       6  |  3.285524e-08
+       7  |  1.200659e-09
+--- 2 ranks, n=127, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 7 iterations.
+Final relative residual: 2.175628e-09
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.001899 s
+Solve time:  0.003171 s
+Total time:  0.005070 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.071435e-01
+       2  |  1.635294e-02
+       3  |  9.346949e-04
+       4  |  3.761962e-05
+       5  |  3.887870e-06
+       6  |  1.390434e-07
+       7  |  2.175628e-09
+--- 2 ranks, n=255, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 4.859608e-10
+
+Max pointwise error vs analytic solution: 5.020091e-05
+
+Setup time:  0.002274 s
+Solve time:  0.011343 s
+Total time:  0.013617 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.140731e-01
+       2  |  2.000523e-02
+       3  |  1.929732e-03
+       4  |  6.426196e-05
+       5  |  5.159508e-06
+       6  |  4.023450e-07
+       7  |  1.062372e-08
+       8  |  4.859608e-10
+--- 2 ranks, n=511, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 8.840550e-10
+
+Max pointwise error vs analytic solution: 1.254994e-05
+
+Setup time:  0.002255 s
+Solve time:  0.042397 s
+Total time:  0.044652 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.204350e-01
+       2  |  2.220276e-02
+       3  |  3.304707e-03
+       4  |  1.209707e-04
+       5  |  6.736536e-06
+       6  |  7.588732e-07
+       7  |  2.738130e-08
+       8  |  8.840550e-10
+--- 2 ranks, n=1023, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 2.024229e-09
+
+Max pointwise error vs analytic solution: 3.137468e-06
+
+Setup time:  0.002392 s
+Solve time:  0.201997 s
+Total time:  0.204389 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.264342e-01
+       2  |  2.383654e-02
+       3  |  4.383605e-03
+       4  |  2.712629e-04
+       5  |  9.531472e-06
+       6  |  1.013746e-06
+       7  |  6.801742e-08
+       8  |  2.024229e-09
+--- 2 ranks, n=2047, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 4.395388e-09
+
+Max pointwise error vs analytic solution: 7.843652e-07
+
+Setup time:  0.001793 s
+Solve time:  0.792252 s
+Total time:  0.794045 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.321591e-01
+       2  |  2.530920e-02
+       3  |  5.054071e-03
+       4  |  5.546503e-04
+       5  |  1.608020e-05
+       6  |  1.248354e-06
+       7  |  1.382333e-07
+       8  |  4.395388e-09
+--- 2 ranks, n=4095, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 9 iterations.
+Final relative residual: 3.316055e-10
+
+Max pointwise error vs analytic solution: 1.960915e-07
+
+Setup time:  0.002160 s
+Solve time:  3.835171 s
+Total time:  3.837331 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.376560e-01
+       2  |  2.675426e-02
+       3  |  5.529365e-03
+       4  |  8.470463e-04
+       5  |  3.690078e-05
+       6  |  1.597666e-06
+       7  |  1.962588e-07
+       8  |  1.066108e-08
+       9  |  3.316055e-10
+--- 4 ranks, n=63, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 2.124466e-09
+
+Max pointwise error vs analytic solution: 8.035778e-04
+
+Setup time:  0.002001 s
+Solve time:  0.002104 s
+Total time:  0.004104 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  9.953387e-02
+       2  |  1.844247e-02
+       3  |  1.905141e-03
+       4  |  1.084488e-04
+       5  |  8.678211e-06
+       6  |  6.245464e-07
+       7  |  3.417820e-08
+       8  |  2.124466e-09
+--- 4 ranks, n=127, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 6.925264e-09
+
+Max pointwise error vs analytic solution: 2.008219e-04
+
+Setup time:  0.002106 s
+Solve time:  0.003279 s
+Total time:  0.005385 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.081220e-01
+       2  |  2.613581e-02
+       3  |  4.218992e-03
+       4  |  2.489086e-04
+       5  |  1.765140e-05
+       6  |  1.801289e-06
+       7  |  9.372699e-08
+       8  |  6.925264e-09
+--- 4 ranks, n=255, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 9 iterations.
+Final relative residual: 1.119647e-09
+
+Max pointwise error vs analytic solution: 5.020093e-05
+
+Setup time:  0.002183 s
+Solve time:  0.007980 s
+Total time:  0.010163 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.171558e-01
+       2  |  3.602953e-02
+       3  |  7.385915e-03
+       4  |  6.776586e-04
+       5  |  3.876604e-05
+       6  |  3.743887e-06
+       7  |  2.673055e-07
+       8  |  1.744936e-08
+       9  |  1.119647e-09
+--- 4 ranks, n=511, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 9 iterations.
+Final relative residual: 2.930699e-09
+
+Max pointwise error vs analytic solution: 1.254996e-05
+
+Setup time:  0.002752 s
+Solve time:  0.026792 s
+Total time:  0.029544 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.310324e-01
+       2  |  5.637463e-02
+       3  |  1.120257e-02
+       4  |  1.756022e-03
+       5  |  9.830801e-05
+       6  |  7.834242e-06
+       7  |  6.719890e-07
+       8  |  4.207502e-08
+       9  |  2.930699e-09
+--- 4 ranks, n=1023, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 9 iterations.
+Final relative residual: 7.067083e-09
+
+Max pointwise error vs analytic solution: 3.137483e-06
+
+Setup time:  0.003713 s
+Solve time:  0.105486 s
+Total time:  0.109199 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.619817e-01
+       2  |  1.002148e-01
+       3  |  1.795468e-02
+       4  |  3.927021e-03
+       5  |  2.717947e-04
+       6  |  1.806667e-05
+       7  |  1.527520e-06
+       8  |  1.085462e-07
+       9  |  7.067083e-09
+--- 4 ranks, n=2047, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 10 iterations.
+Final relative residual: 1.357865e-09
+
+Max pointwise error vs analytic solution: 7.843665e-07
+
+Setup time:  0.007561 s
+Solve time:  0.505283 s
+Total time:  0.512843 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.391872e-01
+       2  |  1.895924e-01
+       3  |  3.209317e-02
+       4  |  8.498279e-03
+       5  |  7.182825e-04
+       6  |  4.519448e-05
+       7  |  3.431177e-06
+       8  |  2.856346e-07
+       9  |  1.775953e-08
+      10  |  1.357865e-09
+--- 4 ranks, n=4095, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 10 iterations.
+Final relative residual: 3.471540e-09
+
+Max pointwise error vs analytic solution: 1.960923e-07
+
+Setup time:  0.022266 s
+Solve time:  2.215847 s
+Total time:  2.238113 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  4.163249e-01
+       2  |  3.666561e-01
+       3  |  6.087052e-02
+       4  |  1.838062e-02
+       5  |  1.785155e-03
+       6  |  1.186166e-04
+       7  |  7.818454e-06
+       8  |  7.325728e-07
+       9  |  4.789220e-08
+      10  |  3.471540e-09
+--- 8 ranks, n=63, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 9 iterations.
+Final relative residual: 1.392439e-09
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.002616 s
+Solve time:  0.002579 s
+Total time:  0.005195 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  9.998086e-02
+       2  |  2.170144e-02
+       3  |  2.978340e-03
+       4  |  2.866300e-04
+       5  |  3.014119e-05
+       6  |  3.476495e-06
+       7  |  1.841805e-07
+       8  |  1.495499e-08
+       9  |  1.392439e-09
+--- 8 ranks, n=127, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 9 iterations.
+Final relative residual: 4.256099e-09
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.003025 s
+Solve time:  0.003307 s
+Total time:  0.006332 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.088383e-01
+       2  |  3.044866e-02
+       3  |  6.338345e-03
+       4  |  6.069736e-04
+       5  |  6.052292e-05
+       6  |  7.327360e-06
+       7  |  5.946658e-07
+       8  |  3.950108e-08
+       9  |  4.256099e-09
+--- 8 ranks, n=255, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 10 iterations.
+Final relative residual: 1.310958e-09
+
+Max pointwise error vs analytic solution: 5.020093e-05
+
+Setup time:  0.003081 s
+Solve time:  0.006689 s
+Total time:  0.009769 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.189148e-01
+       2  |  4.256462e-02
+       3  |  1.051658e-02
+       4  |  1.412272e-03
+       5  |  1.336792e-04
+       6  |  1.514183e-05
+       7  |  1.633533e-06
+       8  |  1.149206e-07
+       9  |  1.137303e-08
+      10  |  1.310958e-09
+--- 8 ranks, n=511, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 10 iterations.
+Final relative residual: 3.827231e-09
+
+Max pointwise error vs analytic solution: 1.254996e-05
+
+Setup time:  0.002968 s
+Solve time:  0.018729 s
+Total time:  0.021696 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.363588e-01
+       2  |  6.802601e-02
+       3  |  1.592707e-02
+       4  |  3.053971e-03
+       5  |  3.496372e-04
+       6  |  3.544402e-05
+       7  |  3.830965e-06
+       8  |  3.489130e-07
+       9  |  2.966726e-08
+      10  |  3.827231e-09
+--- 8 ranks, n=1023, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 11 iterations.
+Final relative residual: 1.291976e-09
+
+Max pointwise error vs analytic solution: 3.137471e-06
+
+Setup time:  0.003834 s
+Solve time:  0.073098 s
+Total time:  0.076932 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.777132e-01
+       2  |  1.223794e-01
+       3  |  2.622098e-02
+       4  |  6.155111e-03
+       5  |  8.880554e-04
+       6  |  9.135013e-05
+       7  |  9.179054e-06
+       8  |  9.513727e-07
+       9  |  8.252417e-08
+      10  |  1.023119e-08
+      11  |  1.291976e-09
+--- 8 ranks, n=2047, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 11 iterations.
+Final relative residual: 3.843266e-09
+
+Max pointwise error vs analytic solution: 7.843685e-07
+
+Setup time:  0.006407 s
+Solve time:  0.402400 s
+Total time:  0.408807 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.789039e-01
+       2  |  2.323658e-01
+       3  |  4.768807e-02
+       4  |  1.262321e-02
+       5  |  2.046745e-03
+       6  |  2.410628e-04
+       7  |  2.293808e-05
+       8  |  2.433272e-06
+       9  |  2.371683e-07
+      10  |  2.778942e-08
+      11  |  3.843266e-09
+--- 8 ranks, n=4095, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 12 iterations.
+Final relative residual: 1.340785e-09
+
+Max pointwise error vs analytic solution: 1.960918e-07
+
+Setup time:  0.020328 s
+Solve time:  1.569267 s
+Total time:  1.589596 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.031003e-01
+       2  |  4.494664e-01
+       3  |  9.091335e-02
+       4  |  2.643302e-02
+       5  |  4.481813e-03
+       6  |  6.213509e-04
+       7  |  5.971276e-05
+       8  |  6.063457e-06
+       9  |  6.668772e-07
+      10  |  7.766155e-08
+      11  |  1.103272e-08
+      12  |  1.340785e-09
+--- 16 ranks, n=63, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 10 iterations.
+Final relative residual: 1.265632e-09
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.002859 s
+Solve time:  0.003238 s
+Total time:  0.006097 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  4.954673e-01
+       2  |  6.551723e-02
+       3  |  5.569604e-03
+       4  |  1.396898e-03
+       5  |  1.607594e-04
+       6  |  1.459089e-05
+       7  |  1.748828e-06
+       8  |  1.737217e-07
+       9  |  1.340644e-08
+      10  |  1.265632e-09
+--- 16 ranks, n=127, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 10 iterations.
+Final relative residual: 3.806755e-09
+
+Max pointwise error vs analytic solution: 2.008219e-04
+
+Setup time:  0.003243 s
+Solve time:  0.003894 s
+Total time:  0.007137 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  9.625455e-01
+       2  |  1.310227e-01
+       3  |  1.406261e-02
+       4  |  2.725713e-03
+       5  |  4.304450e-04
+       6  |  3.730853e-05
+       7  |  4.323241e-06
+       8  |  5.099236e-07
+       9  |  4.201387e-08
+      10  |  3.806755e-09
+--- 16 ranks, n=255, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 11 iterations.
+Final relative residual: 1.352499e-09
+
+Max pointwise error vs analytic solution: 5.020095e-05
+
+Setup time:  0.003486 s
+Solve time:  0.006224 s
+Total time:  0.009710 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.887424e+00
+       2  |  2.643757e-01
+       3  |  3.492534e-02
+       4  |  5.397092e-03
+       5  |  1.088325e-03
+       6  |  9.806729e-05
+       7  |  1.041454e-05
+       8  |  1.389392e-06
+       9  |  1.270885e-07
+      10  |  1.126479e-08
+      11  |  1.352499e-09
+--- 16 ranks, n=511, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 11 iterations.
+Final relative residual: 3.938819e-09
+
+Max pointwise error vs analytic solution: 1.255000e-05
+
+Setup time:  0.003223 s
+Solve time:  0.013059 s
+Total time:  0.016282 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.711697e+00
+       2  |  5.332295e-01
+       3  |  8.356643e-02
+       4  |  1.110195e-02
+       5  |  2.617899e-03
+       6  |  2.502655e-04
+       7  |  2.525694e-05
+       8  |  3.660692e-06
+       9  |  3.723795e-07
+      10  |  3.374577e-08
+      11  |  3.938819e-09
+--- 16 ranks, n=1023, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 12 iterations.
+Final relative residual: 1.539124e-09
+
+Max pointwise error vs analytic solution: 3.137475e-06
+
+Setup time:  0.003957 s
+Solve time:  0.048771 s
+Total time:  0.052728 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  7.305281e+00
+       2  |  1.070017e+00
+       3  |  1.928659e-01
+       4  |  2.391255e-02
+       5  |  6.045982e-03
+       6  |  6.158582e-04
+       7  |  6.201267e-05
+       8  |  9.483272e-06
+       9  |  1.069481e-06
+      10  |  9.987019e-08
+      11  |  1.116708e-08
+      12  |  1.539124e-09
+--- 16 ranks, n=2047, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 12 iterations.
+Final relative residual: 4.651661e-09
+
+Max pointwise error vs analytic solution: 7.843804e-07
+
+Setup time:  0.005704 s
+Solve time:  0.296355 s
+Total time:  0.302060 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.438174e+01
+       2  |  2.134688e+00
+       3  |  4.332713e-01
+       4  |  5.350323e-02
+       5  |  1.338989e-02
+       6  |  1.481193e-03
+       7  |  1.528356e-04
+       8  |  2.397184e-05
+       9  |  3.024795e-06
+      10  |  2.889296e-07
+      11  |  3.186374e-08
+      12  |  4.651661e-09
+--- 16 ranks, n=4095, cavity, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 13 iterations.
+Final relative residual: 1.709493e-09
+
+Max pointwise error vs analytic solution: 1.960943e-07
+
+Setup time:  0.011686 s
+Solve time:  1.317781 s
+Total time:  1.329467 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.831575e+01
+       2  |  4.236096e+00
+       3  |  9.559006e-01
+       4  |  1.221245e-01
+       5  |  2.849406e-02
+       6  |  3.538344e-03
+       7  |  3.745675e-04
+       8  |  5.869390e-05
+       9  |  8.505191e-06
+      10  |  8.145264e-07
+      11  |  9.239164e-08
+      12  |  1.347200e-08
+      13  |  1.709493e-09
+--- 1 ranks, n=63, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 1.861545e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.001126 s
+Solve time:  0.002054 s
+Total time:  0.003180 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.384460e-03
+       2  |  4.184662e-05
+       3  |  1.177160e-06
+       4  |  1.557618e-08
+       5  |  1.861545e-10
+--- 1 ranks, n=127, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 2.033984e-10
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.001205 s
+Solve time:  0.008472 s
+Total time:  0.009677 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.225439e-03
+       2  |  2.753426e-05
+       3  |  6.380840e-07
+       4  |  1.633239e-08
+       5  |  2.033984e-10
+--- 1 ranks, n=255, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 2.627640e-10
+
+Max pointwise error vs analytic solution: 5.020092e-05
+
+Setup time:  0.000750 s
+Solve time:  0.034713 s
+Total time:  0.035463 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.185210e-03
+       2  |  2.310080e-05
+       3  |  3.255034e-07
+       4  |  1.014607e-08
+       5  |  2.627640e-10
+--- 1 ranks, n=511, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 4 iterations.
+Final relative residual: 4.744331e-09
+
+Max pointwise error vs analytic solution: 1.255006e-05
+
+Setup time:  0.001243 s
+Solve time:  0.114498 s
+Total time:  0.115740 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.175187e-03
+       2  |  2.198689e-05
+       3  |  2.111622e-07
+       4  |  4.744331e-09
+--- 1 ranks, n=1023, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 4 iterations.
+Final relative residual: 2.470006e-09
+
+Max pointwise error vs analytic solution: 3.137584e-06
+
+Setup time:  0.001228 s
+Solve time:  0.459695 s
+Total time:  0.460923 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.172690e-03
+       2  |  2.172034e-05
+       3  |  1.797880e-07
+       4  |  2.470006e-09
+--- 1 ranks, n=2047, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 4 iterations.
+Final relative residual: 1.745207e-09
+
+Max pointwise error vs analytic solution: 7.844818e-07
+
+Setup time:  0.001246 s
+Solve time:  1.890607 s
+Total time:  1.891853 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.172067e-03
+       2  |  2.165600e-05
+       3  |  1.725095e-07
+       4  |  1.745207e-09
+--- 1 ranks, n=4095, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 4 iterations.
+Final relative residual: 1.570151e-09
+
+Max pointwise error vs analytic solution: 1.962074e-07
+
+Setup time:  0.001318 s
+Solve time:  7.621202 s
+Total time:  7.622521 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.171911e-03
+       2  |  2.164025e-05
+       3  |  1.708640e-07
+       4  |  1.570151e-09
+--- 2 ranks, n=63, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 2.395709e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.002256 s
+Solve time:  0.001765 s
+Total time:  0.004021 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.315893e-03
+       2  |  4.988183e-05
+       3  |  1.466259e-06
+       4  |  1.954201e-08
+       5  |  2.395709e-10
+--- 2 ranks, n=127, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 2.453785e-10
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.001921 s
+Solve time:  0.005092 s
+Total time:  0.007013 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.118120e-03
+       2  |  3.040980e-05
+       3  |  7.878931e-07
+       4  |  2.166044e-08
+       5  |  2.453785e-10
+--- 2 ranks, n=255, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 3.206859e-10
+
+Max pointwise error vs analytic solution: 5.020092e-05
+
+Setup time:  0.001919 s
+Solve time:  0.018120 s
+Total time:  0.020039 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.070056e-03
+       2  |  2.456662e-05
+       3  |  4.016713e-07
+       4  |  1.383043e-08
+       5  |  3.206859e-10
+--- 2 ranks, n=511, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 4 iterations.
+Final relative residual: 7.384804e-09
+
+Max pointwise error vs analytic solution: 1.255006e-05
+
+Setup time:  0.001947 s
+Solve time:  0.057396 s
+Total time:  0.059343 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.058095e-03
+       2  |  2.312294e-05
+       3  |  2.622907e-07
+       4  |  7.384804e-09
+--- 2 ranks, n=1023, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 4 iterations.
+Final relative residual: 4.626120e-09
+
+Max pointwise error vs analytic solution: 3.137569e-06
+
+Setup time:  0.001962 s
+Solve time:  0.247855 s
+Total time:  0.249818 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.054962e-03
+       2  |  2.276339e-05
+       3  |  2.189755e-07
+       4  |  4.626120e-09
+--- 2 ranks, n=2047, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 4 iterations.
+Final relative residual: 3.405288e-09
+
+Max pointwise error vs analytic solution: 7.844628e-07
+
+Setup time:  0.002082 s
+Solve time:  0.942438 s
+Total time:  0.944520 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.054072e-03
+       2  |  2.266409e-05
+       3  |  2.046726e-07
+       4  |  3.405288e-09
+--- 2 ranks, n=4095, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 4 iterations.
+Final relative residual: 2.774585e-09
+
+Max pointwise error vs analytic solution: 1.961873e-07
+
+Setup time:  0.001940 s
+Solve time:  3.748685 s
+Total time:  3.750625 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.053785e-03
+       2  |  2.263258e-05
+       3  |  1.989723e-07
+       4  |  2.774585e-09
+--- 4 ranks, n=63, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 1.377071e-09
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.002372 s
+Solve time:  0.002151 s
+Total time:  0.004524 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.272172e-03
+       2  |  2.467370e-04
+       3  |  8.590141e-06
+       4  |  1.468733e-07
+       5  |  1.377071e-09
+--- 4 ranks, n=127, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 2.017091e-09
+
+Max pointwise error vs analytic solution: 2.008219e-04
+
+Setup time:  0.002094 s
+Solve time:  0.003821 s
+Total time:  0.005915 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.064016e-03
+       2  |  4.793583e-04
+       3  |  1.904571e-05
+       4  |  3.580109e-07
+       5  |  2.017091e-09
+--- 4 ranks, n=255, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 4.031303e-09
+
+Max pointwise error vs analytic solution: 5.020100e-05
+
+Setup time:  0.001762 s
+Solve time:  0.010387 s
+Total time:  0.012149 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.117046e-03
+       2  |  9.461015e-04
+       3  |  4.001201e-05
+       4  |  8.534729e-07
+       5  |  4.031303e-09
+--- 4 ranks, n=511, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 8.550346e-09
+
+Max pointwise error vs analytic solution: 1.255003e-05
+
+Setup time:  0.002780 s
+Solve time:  0.038200 s
+Total time:  0.040980 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.500754e-03
+       2  |  1.866014e-03
+       3  |  8.224388e-05
+       4  |  2.016955e-06
+       5  |  8.550346e-09
+--- 4 ranks, n=1023, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 5.117055e-10
+
+Max pointwise error vs analytic solution: 3.137469e-06
+
+Setup time:  0.004091 s
+Solve time:  0.178481 s
+Total time:  0.182571 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  4.751404e-03
+       2  |  3.678476e-03
+       3  |  1.673952e-04
+       4  |  4.662948e-06
+       5  |  1.859359e-08
+       6  |  5.117055e-10
+--- 4 ranks, n=2047, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 1.076758e-09
+
+Max pointwise error vs analytic solution: 7.843667e-07
+
+Setup time:  0.007309 s
+Solve time:  0.714112 s
+Total time:  0.721421 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  7.958612e-03
+       2  |  7.250099e-03
+       3  |  3.387581e-04
+       4  |  1.054799e-05
+       5  |  4.140985e-08
+       6  |  1.076758e-09
+--- 4 ranks, n=4095, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 2.259799e-09
+
+Max pointwise error vs analytic solution: 1.960922e-07
+
+Setup time:  0.021969 s
+Solve time:  2.899161 s
+Total time:  2.921130 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.496689e-02
+       2  |  1.428885e-02
+       3  |  6.828230e-04
+       4  |  2.342533e-05
+       5  |  9.437390e-08
+       6  |  2.259799e-09
+--- 8 ranks, n=63, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 8.579027e-09
+
+Max pointwise error vs analytic solution: 8.035786e-04
+
+Setup time:  0.003002 s
+Solve time:  0.002451 s
+Total time:  0.005453 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.803136e-03
+       2  |  5.471709e-04
+       3  |  1.564877e-05
+       4  |  2.587595e-07
+       5  |  8.579027e-09
+--- 8 ranks, n=127, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 4.737958e-10
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.003307 s
+Solve time:  0.003714 s
+Total time:  0.007021 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.499260e-03
+       2  |  9.341601e-04
+       3  |  3.373408e-05
+       4  |  6.218211e-07
+       5  |  1.528112e-08
+       6  |  4.737958e-10
+--- 8 ranks, n=255, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 7.955650e-10
+
+Max pointwise error vs analytic solution: 5.020092e-05
+
+Setup time:  0.002752 s
+Solve time:  0.008376 s
+Total time:  0.011128 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  4.920479e-03
+       2  |  1.801879e-03
+       3  |  7.164058e-05
+       4  |  1.498547e-06
+       5  |  3.887981e-08
+       6  |  7.955650e-10
+--- 8 ranks, n=511, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 1.669972e-09
+
+Max pointwise error vs analytic solution: 1.254996e-05
+
+Setup time:  0.003310 s
+Solve time:  0.027519 s
+Total time:  0.030829 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.399741e-03
+       2  |  3.544720e-03
+       3  |  1.503515e-04
+       4  |  3.493168e-06
+       5  |  1.056961e-07
+       6  |  1.669972e-09
+--- 8 ranks, n=1023, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 3.715481e-09
+
+Max pointwise error vs analytic solution: 3.137485e-06
+
+Setup time:  0.003612 s
+Solve time:  0.101078 s
+Total time:  0.104690 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  7.944438e-03
+       2  |  6.985600e-03
+       3  |  3.113437e-04
+       4  |  8.018998e-06
+       5  |  2.807150e-07
+       6  |  3.715481e-09
+--- 8 ranks, n=2047, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 8.311125e-09
+
+Max pointwise error vs analytic solution: 7.843870e-07
+
+Setup time:  0.006168 s
+Solve time:  0.432900 s
+Total time:  0.439068 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.429382e-02
+       2  |  1.376600e-02
+       3  |  6.384136e-04
+       4  |  1.815585e-05
+       5  |  7.241819e-07
+       6  |  8.311125e-09
+--- 8 ranks, n=4095, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 7 iterations.
+Final relative residual: 9.021844e-10
+
+Max pointwise error vs analytic solution: 1.960916e-07
+
+Setup time:  0.013148 s
+Solve time:  1.906259 s
+Total time:  1.919406 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.765035e-02
+       2  |  2.712552e-02
+       3  |  1.300087e-03
+       4  |  4.055140e-05
+       5  |  1.818100e-06
+       6  |  1.865586e-08
+       7  |  9.021844e-10
+--- 16 ranks, n=63, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 2.100299e-09
+
+Max pointwise error vs analytic solution: 8.035781e-04
+
+Setup time:  0.003109 s
+Solve time:  0.002995 s
+Total time:  0.006104 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.942801e-01
+       2  |  5.013322e-03
+       3  |  2.753133e-05
+       4  |  8.365747e-07
+       5  |  4.592494e-08
+       6  |  2.100299e-09
+--- 16 ranks, n=127, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 6 iterations.
+Final relative residual: 4.575174e-09
+
+Max pointwise error vs analytic solution: 2.008224e-04
+
+Setup time:  0.003277 s
+Solve time:  0.003693 s
+Total time:  0.006970 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.989413e-01
+       2  |  1.288607e-02
+       3  |  8.275848e-05
+       4  |  1.695896e-06
+       5  |  1.088073e-07
+       6  |  4.575174e-09
+--- 16 ranks, n=255, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 7 iterations.
+Final relative residual: 4.225805e-10
+
+Max pointwise error vs analytic solution: 5.020093e-05
+
+Setup time:  0.003305 s
+Solve time:  0.007141 s
+Total time:  0.010447 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  7.987291e-01
+       2  |  2.937633e-02
+       3  |  2.347179e-04
+       4  |  3.559172e-06
+       5  |  2.439671e-07
+       6  |  1.038231e-08
+       7  |  4.225805e-10
+--- 16 ranks, n=511, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 7 iterations.
+Final relative residual: 1.131016e-09
+
+Max pointwise error vs analytic solution: 1.254997e-05
+
+Setup time:  0.003571 s
+Solve time:  0.018555 s
+Total time:  0.022126 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.588840e+00
+       2  |  6.352010e-02
+       3  |  6.348120e-04
+       4  |  7.503250e-06
+       5  |  5.316894e-07
+       6  |  2.375544e-08
+       7  |  1.131016e-09
+--- 16 ranks, n=1023, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 7 iterations.
+Final relative residual: 2.928487e-09
+
+Max pointwise error vs analytic solution: 3.137508e-06
+
+Setup time:  0.003496 s
+Solve time:  0.066221 s
+Total time:  0.069717 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.155354e+00
+       2  |  1.337152e-01
+       3  |  1.651213e-03
+       4  |  1.588292e-05
+       5  |  1.139254e-06
+       6  |  5.422249e-08
+       7  |  2.928487e-09
+--- 16 ranks, n=2047, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 7 iterations.
+Final relative residual: 7.370910e-09
+
+Max pointwise error vs analytic solution: 7.844229e-07
+
+Setup time:  0.005855 s
+Solve time:  0.281679 s
+Total time:  0.287534 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.263773e+00
+       2  |  2.771647e-01
+       3  |  4.152459e-03
+       4  |  3.383622e-05
+       5  |  2.417455e-06
+       6  |  1.228509e-07
+       7  |  7.370910e-09
+--- 16 ranks, n=4095, cavity, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 8 iterations.
+Final relative residual: 3.526434e-10
+
+Max pointwise error vs analytic solution: 1.960915e-07
+
+Setup time:  0.012191 s
+Solve time:  1.270612 s
+Total time:  1.282803 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.243309e+01
+       2  |  5.688711e-01
+       3  |  1.013523e-02
+       4  |  7.273647e-05
+       5  |  5.108116e-06
+       6  |  2.756843e-07
+       7  |  1.806192e-08
+       8  |  3.526434e-10
+--- 1 ranks, n=63, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 3.663200e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.001213 s
+Solve time:  0.001362 s
+Total time:  0.002576 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.196872e-01
+       2  |  6.356015e-06
+       3  |  2.840216e-08
+       4  |  3.663200e-10
+--- 1 ranks, n=127, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 8.362511e-11
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.001233 s
+Solve time:  0.004883 s
+Total time:  0.006115 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.209942e-01
+       2  |  6.447676e-06
+       3  |  1.098595e-08
+       4  |  8.362511e-11
+--- 1 ranks, n=255, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 3.833021e-09
+
+Max pointwise error vs analytic solution: 5.020090e-05
+
+Setup time:  0.001223 s
+Solve time:  0.014848 s
+Total time:  0.016070 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.213217e-01
+       2  |  6.534911e-06
+       3  |  3.833021e-09
+--- 1 ranks, n=511, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.998926e-09
+
+Max pointwise error vs analytic solution: 1.254993e-05
+
+Setup time:  0.000778 s
+Solve time:  0.059136 s
+Total time:  0.059914 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214036e-01
+       2  |  7.610163e-06
+       3  |  1.998926e-09
+--- 1 ranks, n=1023, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.550551e-09
+
+Max pointwise error vs analytic solution: 3.137456e-06
+
+Setup time:  0.001222 s
+Solve time:  0.229777 s
+Total time:  0.231000 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214241e-01
+       2  |  1.731742e-05
+       3  |  1.550551e-09
+--- 1 ranks, n=2047, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.440377e-09
+
+Max pointwise error vs analytic solution: 7.843532e-07
+
+Setup time:  0.001255 s
+Solve time:  0.956769 s
+Total time:  0.958024 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214292e-01
+       2  |  6.437506e-05
+       3  |  1.440377e-09
+--- 1 ranks, n=4095, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.413112e-09
+
+Max pointwise error vs analytic solution: 1.960786e-07
+
+Setup time:  0.001373 s
+Solve time:  4.075103 s
+Total time:  4.076476 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214305e-01
+       2  |  2.530515e-04
+       3  |  1.413112e-09
+--- 2 ranks, n=63, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 3.663200e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.001897 s
+Solve time:  0.001581 s
+Total time:  0.003478 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.196872e-01
+       2  |  6.356015e-06
+       3  |  2.840216e-08
+       4  |  3.663200e-10
+--- 2 ranks, n=127, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 8.362511e-11
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.001897 s
+Solve time:  0.003463 s
+Total time:  0.005360 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.209942e-01
+       2  |  6.447676e-06
+       3  |  1.098595e-08
+       4  |  8.362511e-11
+--- 2 ranks, n=255, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 3.833021e-09
+
+Max pointwise error vs analytic solution: 5.020090e-05
+
+Setup time:  0.001912 s
+Solve time:  0.008228 s
+Total time:  0.010140 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.213217e-01
+       2  |  6.534911e-06
+       3  |  3.833021e-09
+--- 2 ranks, n=511, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.998926e-09
+
+Max pointwise error vs analytic solution: 1.254993e-05
+
+Setup time:  0.002247 s
+Solve time:  0.029723 s
+Total time:  0.031970 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214036e-01
+       2  |  7.610163e-06
+       3  |  1.998926e-09
+--- 2 ranks, n=1023, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.550551e-09
+
+Max pointwise error vs analytic solution: 3.137456e-06
+
+Setup time:  0.001935 s
+Solve time:  0.129393 s
+Total time:  0.131327 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214241e-01
+       2  |  1.731742e-05
+       3  |  1.550551e-09
+--- 2 ranks, n=2047, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.440377e-09
+
+Max pointwise error vs analytic solution: 7.843532e-07
+
+Setup time:  0.002064 s
+Solve time:  0.482900 s
+Total time:  0.484965 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214292e-01
+       2  |  6.437506e-05
+       3  |  1.440377e-09
+--- 2 ranks, n=4095, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.413112e-09
+
+Max pointwise error vs analytic solution: 1.960786e-07
+
+Setup time:  0.003437 s
+Solve time:  1.968154 s
+Total time:  1.971591 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214305e-01
+       2  |  2.530515e-04
+       3  |  1.413112e-09
+--- 4 ranks, n=63, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 3.663200e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.002431 s
+Solve time:  0.002188 s
+Total time:  0.004619 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.196872e-01
+       2  |  6.356015e-06
+       3  |  2.840216e-08
+       4  |  3.663200e-10
+--- 4 ranks, n=127, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 8.362511e-11
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.002071 s
+Solve time:  0.003227 s
+Total time:  0.005298 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.209942e-01
+       2  |  6.447676e-06
+       3  |  1.098595e-08
+       4  |  8.362511e-11
+--- 4 ranks, n=255, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 3.833021e-09
+
+Max pointwise error vs analytic solution: 5.020090e-05
+
+Setup time:  0.002537 s
+Solve time:  0.005532 s
+Total time:  0.008069 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.213217e-01
+       2  |  6.534911e-06
+       3  |  3.833021e-09
+--- 4 ranks, n=511, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.998926e-09
+
+Max pointwise error vs analytic solution: 1.254993e-05
+
+Setup time:  0.002761 s
+Solve time:  0.017305 s
+Total time:  0.020066 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214036e-01
+       2  |  7.610163e-06
+       3  |  1.998926e-09
+--- 4 ranks, n=1023, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.550551e-09
+
+Max pointwise error vs analytic solution: 3.137456e-06
+
+Setup time:  0.003604 s
+Solve time:  0.063705 s
+Total time:  0.067308 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214241e-01
+       2  |  1.731742e-05
+       3  |  1.550551e-09
+--- 4 ranks, n=2047, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.440377e-09
+
+Max pointwise error vs analytic solution: 7.843532e-07
+
+Setup time:  0.007543 s
+Solve time:  0.248606 s
+Total time:  0.256150 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214292e-01
+       2  |  6.437506e-05
+       3  |  1.440377e-09
+--- 4 ranks, n=4095, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.413112e-09
+
+Max pointwise error vs analytic solution: 1.960786e-07
+
+Setup time:  0.023192 s
+Solve time:  1.001394 s
+Total time:  1.024585 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214305e-01
+       2  |  2.530515e-04
+       3  |  1.413112e-09
+--- 8 ranks, n=63, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 3.663200e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.003312 s
+Solve time:  0.002513 s
+Total time:  0.005825 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.196872e-01
+       2  |  6.356015e-06
+       3  |  2.840216e-08
+       4  |  3.663200e-10
+--- 8 ranks, n=127, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 8.362511e-11
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.002654 s
+Solve time:  0.003241 s
+Total time:  0.005895 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.209942e-01
+       2  |  6.447676e-06
+       3  |  1.098595e-08
+       4  |  8.362511e-11
+--- 8 ranks, n=255, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 3.833021e-09
+
+Max pointwise error vs analytic solution: 5.020090e-05
+
+Setup time:  0.003059 s
+Solve time:  0.004588 s
+Total time:  0.007647 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.213217e-01
+       2  |  6.534911e-06
+       3  |  3.833021e-09
+--- 8 ranks, n=511, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.998926e-09
+
+Max pointwise error vs analytic solution: 1.254993e-05
+
+Setup time:  0.003233 s
+Solve time:  0.011665 s
+Total time:  0.014898 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214036e-01
+       2  |  7.610163e-06
+       3  |  1.998926e-09
+--- 8 ranks, n=1023, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.550551e-09
+
+Max pointwise error vs analytic solution: 3.137456e-06
+
+Setup time:  0.004248 s
+Solve time:  0.037323 s
+Total time:  0.041571 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214241e-01
+       2  |  1.731742e-05
+       3  |  1.550551e-09
+--- 8 ranks, n=2047, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.440377e-09
+
+Max pointwise error vs analytic solution: 7.843532e-07
+
+Setup time:  0.007022 s
+Solve time:  0.163038 s
+Total time:  0.170059 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214292e-01
+       2  |  6.437506e-05
+       3  |  1.440377e-09
+--- 8 ranks, n=4095, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.413112e-09
+
+Max pointwise error vs analytic solution: 1.960786e-07
+
+Setup time:  0.013941 s
+Solve time:  0.595551 s
+Total time:  0.609492 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214305e-01
+       2  |  2.530515e-04
+       3  |  1.413112e-09
+--- 16 ranks, n=63, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 3.663200e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.003106 s
+Solve time:  0.003049 s
+Total time:  0.006155 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.196872e-01
+       2  |  6.356015e-06
+       3  |  2.840216e-08
+       4  |  3.663200e-10
+--- 16 ranks, n=127, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 4 iterations.
+Final relative residual: 8.362511e-11
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.003255 s
+Solve time:  0.003599 s
+Total time:  0.006854 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.209942e-01
+       2  |  6.447676e-06
+       3  |  1.098595e-08
+       4  |  8.362511e-11
+--- 16 ranks, n=255, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 3.833021e-09
+
+Max pointwise error vs analytic solution: 5.020090e-05
+
+Setup time:  0.003521 s
+Solve time:  0.004530 s
+Total time:  0.008050 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.213217e-01
+       2  |  6.534911e-06
+       3  |  3.833021e-09
+--- 16 ranks, n=511, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.998926e-09
+
+Max pointwise error vs analytic solution: 1.254993e-05
+
+Setup time:  0.003034 s
+Solve time:  0.007979 s
+Total time:  0.011013 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214036e-01
+       2  |  7.610163e-06
+       3  |  1.998926e-09
+--- 16 ranks, n=1023, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.550551e-09
+
+Max pointwise error vs analytic solution: 3.137456e-06
+
+Setup time:  0.003720 s
+Solve time:  0.022620 s
+Total time:  0.026341 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214241e-01
+       2  |  1.731742e-05
+       3  |  1.550551e-09
+--- 16 ranks, n=2047, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.440377e-09
+
+Max pointwise error vs analytic solution: 7.843532e-07
+
+Setup time:  0.006050 s
+Solve time:  0.106306 s
+Total time:  0.112356 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214292e-01
+       2  |  6.437506e-05
+       3  |  1.440377e-09
+--- 16 ranks, n=4095, cavity, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 3 iterations.
+Final relative residual: 1.413112e-09
+
+Max pointwise error vs analytic solution: 1.960786e-07
+
+Setup time:  0.013698 s
+Solve time:  0.430131 s
+Total time:  0.443829 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.214305e-01
+       2  |  2.530515e-04
+       3  |  1.413112e-09
+--- 1 ranks, n=63, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 4 iterations.
+Final relative residual: 4.434513e-09
+
+Max pointwise error vs analytic solution: 8.035782e-04
+
+Setup time:  0.000699 s
+Solve time:  0.002069 s
+Total time:  0.002768 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.972592e-03
+       2  |  1.584682e-04
+       3  |  2.062953e-06
+       4  |  4.434513e-09
+--- 1 ranks, n=127, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 4 iterations.
+Final relative residual: 7.028153e-09
+
+Max pointwise error vs analytic solution: 2.008220e-04
+
+Setup time:  0.001431 s
+Solve time:  0.008657 s
+Total time:  0.010089 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.895342e-03
+       2  |  1.667157e-04
+       3  |  3.502765e-06
+       4  |  7.028153e-09
+--- 1 ranks, n=255, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 2.854102e-11
+
+Max pointwise error vs analytic solution: 5.020092e-05
+
+Setup time:  0.001218 s
+Solve time:  0.043271 s
+Total time:  0.044489 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.882821e-03
+       2  |  1.690847e-04
+       3  |  4.328883e-06
+       4  |  2.116698e-08
+       5  |  2.854102e-11
+--- 1 ranks, n=511, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 6.685221e-11
+
+Max pointwise error vs analytic solution: 1.254995e-05
+
+Setup time:  0.000684 s
+Solve time:  0.174681 s
+Total time:  0.175364 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.880380e-03
+       2  |  1.697106e-04
+       3  |  4.604435e-06
+       4  |  5.720473e-08
+       5  |  6.685221e-11
+--- 1 ranks, n=1023, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 2.371966e-10
+
+Max pointwise error vs analytic solution: 3.137470e-06
+
+Setup time:  0.001152 s
+Solve time:  0.710700 s
+Total time:  0.711853 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.879883e-03
+       2  |  1.698710e-04
+       3  |  4.679200e-06
+       4  |  1.017925e-07
+       5  |  2.371966e-10
+--- 1 ranks, n=2047, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 7.807678e-10
+
+Max pointwise error vs analytic solution: 7.843671e-07
+
+Setup time:  0.001301 s
+Solve time:  2.899155 s
+Total time:  2.900456 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.879820e-03
+       2  |  1.699119e-04
+       3  |  4.698307e-06
+       4  |  1.265897e-07
+       5  |  7.807678e-10
+--- 1 ranks, n=4095, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 1 x 1
+MPI ranks:    1
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 1.862770e-09
+
+Max pointwise error vs analytic solution: 1.960921e-07
+
+Setup time:  0.001231 s
+Solve time:  11.734909 s
+Total time:  11.736140 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.879860e-03
+       2  |  1.699225e-04
+       3  |  4.703120e-06
+       4  |  1.348099e-07
+       5  |  1.862770e-09
+--- 2 ranks, n=63, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 5.346277e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.001488 s
+Solve time:  0.002031 s
+Total time:  0.003519 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.930962e-03
+       2  |  1.840950e-04
+       3  |  3.680312e-06
+       4  |  1.372555e-07
+       5  |  5.346277e-10
+--- 2 ranks, n=127, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 1.246359e-09
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.001928 s
+Solve time:  0.006134 s
+Total time:  0.008062 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.759977e-03
+       2  |  1.885722e-04
+       3  |  4.204744e-06
+       4  |  1.076901e-07
+       5  |  1.246359e-09
+--- 2 ranks, n=255, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 2.744223e-09
+
+Max pointwise error vs analytic solution: 5.020092e-05
+
+Setup time:  0.001502 s
+Solve time:  0.022432 s
+Total time:  0.023934 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.724988e-03
+       2  |  1.899043e-04
+       3  |  4.724613e-06
+       4  |  8.347236e-08
+       5  |  2.744223e-09
+--- 2 ranks, n=511, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 2.857397e-09
+
+Max pointwise error vs analytic solution: 1.254995e-05
+
+Setup time:  0.001900 s
+Solve time:  0.088021 s
+Total time:  0.089920 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.714223e-03
+       2  |  1.900753e-04
+       3  |  4.898631e-06
+       4  |  8.461510e-08
+       5  |  2.857397e-09
+--- 2 ranks, n=1023, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 2.293090e-09
+
+Max pointwise error vs analytic solution: 3.137470e-06
+
+Setup time:  0.002282 s
+Solve time:  0.371813 s
+Total time:  0.374095 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.709439e-03
+       2  |  1.900192e-04
+       3  |  4.936997e-06
+       4  |  9.842751e-08
+       5  |  2.293090e-09
+--- 2 ranks, n=2047, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 2.117186e-09
+
+Max pointwise error vs analytic solution: 7.843667e-07
+
+Setup time:  0.001775 s
+Solve time:  1.446237 s
+Total time:  1.448012 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.706828e-03
+       2  |  1.899604e-04
+       3  |  4.942031e-06
+       4  |  1.049857e-07
+       5  |  2.117186e-09
+--- 2 ranks, n=4095, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 2 x 1
+MPI ranks:    2
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 5 iterations.
+Final relative residual: 2.151360e-09
+
+Max pointwise error vs analytic solution: 1.960919e-07
+
+Setup time:  0.002172 s
+Solve time:  5.799565 s
+Total time:  5.801737 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.705271e-03
+       2  |  1.899251e-04
+       3  |  4.941404e-06
+       4  |  1.067130e-07
+       5  |  2.151360e-09
+--- 4 ranks, n=63, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 7 iterations.
+Final relative residual: 3.098736e-10
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.002368 s
+Solve time:  0.002677 s
+Total time:  0.005045 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  9.316004e-03
+       2  |  2.482279e-03
+       3  |  1.157755e-03
+       4  |  2.801994e-05
+       5  |  7.038720e-07
+       6  |  1.477688e-08
+       7  |  3.098736e-10
+--- 4 ranks, n=127, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 7 iterations.
+Final relative residual: 6.782388e-10
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.002390 s
+Solve time:  0.005695 s
+Total time:  0.008085 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.479577e-02
+       2  |  4.081426e-03
+       3  |  2.151812e-03
+       4  |  5.625924e-05
+       5  |  1.516431e-06
+       6  |  3.454009e-08
+       7  |  6.782388e-10
+--- 4 ranks, n=255, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 7 iterations.
+Final relative residual: 1.522047e-09
+
+Max pointwise error vs analytic solution: 5.020092e-05
+
+Setup time:  0.002475 s
+Solve time:  0.017391 s
+Total time:  0.019866 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.671698e-02
+       2  |  8.362569e-03
+       3  |  4.460329e-03
+       4  |  1.213614e-04
+       5  |  3.333347e-06
+       6  |  8.119512e-08
+       7  |  1.522047e-09
+--- 4 ranks, n=511, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 7 iterations.
+Final relative residual: 3.496188e-09
+
+Max pointwise error vs analytic solution: 1.254995e-05
+
+Setup time:  0.002462 s
+Solve time:  0.064641 s
+Total time:  0.067104 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.159665e-02
+       2  |  1.699307e-02
+       3  |  9.104754e-03
+       4  |  2.705789e-04
+       5  |  7.377880e-06
+       6  |  1.937674e-07
+       7  |  3.496188e-09
+--- 4 ranks, n=1023, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 7 iterations.
+Final relative residual: 8.153269e-09
+
+Max pointwise error vs analytic solution: 3.137472e-06
+
+Setup time:  0.003354 s
+Solve time:  0.257877 s
+Total time:  0.261231 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.018910e-01
+       2  |  3.421495e-02
+       3  |  1.833656e-02
+       4  |  6.198147e-04
+       5  |  1.637226e-05
+       6  |  4.637727e-07
+       7  |  8.153269e-09
+--- 4 ranks, n=2047, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 8 iterations.
+Final relative residual: 4.398502e-10
+
+Max pointwise error vs analytic solution: 7.843662e-07
+
+Setup time:  0.007245 s
+Solve time:  1.177564 s
+Total time:  1.184809 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.024565e-01
+       2  |  6.866760e-02
+       3  |  3.667450e-02
+       4  |  1.450387e-03
+       5  |  3.635816e-05
+       6  |  1.088539e-06
+       7  |  1.925004e-08
+       8  |  4.398502e-10
+--- 4 ranks, n=4095, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 2 x 2
+MPI ranks:    4
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 8 iterations.
+Final relative residual: 9.938431e-10
+
+Max pointwise error vs analytic solution: 1.960917e-07
+
+Setup time:  0.022098 s
+Solve time:  4.788376 s
+Total time:  4.810474 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  4.029344e-01
+       2  |  1.376739e-01
+       3  |  7.307308e-02
+       4  |  3.439220e-03
+       5  |  8.075540e-05
+       6  |  2.489132e-06
+       7  |  4.626254e-08
+       8  |  9.938431e-10
+--- 8 ranks, n=63, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 9 iterations.
+Final relative residual: 2.315386e-09
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.002942 s
+Solve time:  0.003380 s
+Total time:  0.006322 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.119572e-02
+       2  |  6.377865e-03
+       3  |  2.029018e-03
+       4  |  7.914820e-05
+       5  |  1.948106e-05
+       6  |  3.304529e-06
+       7  |  8.613068e-08
+       8  |  4.108242e-08
+       9  |  2.315386e-09
+--- 8 ranks, n=127, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 9 iterations.
+Final relative residual: 6.419312e-09
+
+Max pointwise error vs analytic solution: 2.008219e-04
+
+Setup time:  0.002979 s
+Solve time:  0.005359 s
+Total time:  0.008339 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.117934e-02
+       2  |  5.449171e-03
+       3  |  2.785217e-03
+       4  |  1.102643e-04
+       5  |  2.683886e-05
+       6  |  7.083014e-06
+       7  |  1.708664e-07
+       8  |  5.305956e-08
+       9  |  6.419312e-09
+--- 8 ranks, n=255, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 10 iterations.
+Final relative residual: 4.120598e-10
+
+Max pointwise error vs analytic solution: 5.020092e-05
+
+Setup time:  0.003078 s
+Solve time:  0.015399 s
+Total time:  0.018477 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.346415e-02
+       2  |  9.894589e-03
+       3  |  5.356800e-03
+       4  |  1.920061e-04
+       5  |  4.956838e-05
+       6  |  1.349185e-05
+       7  |  4.523967e-07
+       8  |  1.034020e-07
+       9  |  1.774343e-08
+      10  |  4.120598e-10
+--- 8 ranks, n=511, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 10 iterations.
+Final relative residual: 1.139861e-09
+
+Max pointwise error vs analytic solution: 1.254995e-05
+
+Setup time:  0.003598 s
+Solve time:  0.053348 s
+Total time:  0.056946 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.325278e-02
+       2  |  1.993025e-02
+       3  |  1.091166e-02
+       4  |  4.055739e-04
+       5  |  9.756892e-05
+       6  |  3.143012e-05
+       7  |  1.138727e-06
+       8  |  2.081103e-07
+       9  |  4.958493e-08
+      10  |  1.139861e-09
+--- 8 ranks, n=1023, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 10 iterations.
+Final relative residual: 3.232769e-09
+
+Max pointwise error vs analytic solution: 3.137473e-06
+
+Setup time:  0.003302 s
+Solve time:  0.203374 s
+Total time:  0.206676 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.245522e-01
+       2  |  4.016469e-02
+       3  |  2.205473e-02
+       4  |  9.002904e-04
+       5  |  1.908908e-04
+       6  |  7.593644e-05
+       7  |  2.819671e-06
+       8  |  4.158301e-07
+       9  |  1.337147e-07
+      10  |  3.232769e-09
+--- 8 ranks, n=2047, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 10 iterations.
+Final relative residual: 9.175053e-09
+
+Max pointwise error vs analytic solution: 7.843731e-07
+
+Setup time:  0.005731 s
+Solve time:  0.869296 s
+Total time:  0.875027 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  2.473798e-01
+       2  |  8.065510e-02
+       3  |  4.421762e-02
+       4  |  2.042697e-03
+       5  |  3.709190e-04
+       6  |  1.780960e-04
+       7  |  6.777686e-06
+       8  |  8.308402e-07
+       9  |  3.327956e-07
+      10  |  9.175053e-09
+--- 8 ranks, n=4095, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 11 iterations.
+Final relative residual: 9.172134e-10
+
+Max pointwise error vs analytic solution: 1.960915e-07
+
+Setup time:  0.013724 s
+Solve time:  3.656293 s
+Total time:  3.670018 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  4.923021e-01
+       2  |  1.617208e-01
+       3  |  8.822781e-02
+       4  |  4.705742e-03
+       5  |  7.179885e-04
+       6  |  4.014635e-04
+       7  |  1.589767e-05
+       8  |  1.669026e-06
+       9  |  7.686021e-07
+      10  |  2.582139e-08
+      11  |  9.172134e-10
+--- 16 ranks, n=63, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  63 x 63 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            1.562500e-02
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 10 iterations.
+Final relative residual: 3.683641e-09
+
+Max pointwise error vs analytic solution: 8.035777e-04
+
+Setup time:  0.002756 s
+Solve time:  0.003750 s
+Total time:  0.006507 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.814256e+00
+       2  |  3.184173e-01
+       3  |  7.376260e-03
+       4  |  3.032067e-04
+       5  |  8.164414e-05
+       6  |  1.979060e-05
+       7  |  1.079339e-06
+       8  |  5.582053e-07
+       9  |  2.061901e-08
+      10  |  3.683641e-09
+--- 16 ranks, n=127, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  127 x 127 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            7.812500e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 10 iterations.
+Final relative residual: 3.091106e-09
+
+Max pointwise error vs analytic solution: 2.008218e-04
+
+Setup time:  0.003520 s
+Solve time:  0.005293 s
+Total time:  0.008813 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.780694e+00
+       2  |  7.466458e-01
+       3  |  1.529804e-02
+       4  |  6.462946e-04
+       5  |  1.443268e-04
+       6  |  5.222892e-05
+       7  |  1.483055e-06
+       8  |  6.284377e-07
+       9  |  5.700814e-08
+      10  |  3.091106e-09
+--- 16 ranks, n=255, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  255 x 255 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            3.906250e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 10 iterations.
+Final relative residual: 6.307270e-09
+
+Max pointwise error vs analytic solution: 5.020094e-05
+
+Setup time:  0.003416 s
+Solve time:  0.010661 s
+Total time:  0.014077 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  7.615899e+00
+       2  |  1.689090e+00
+       3  |  3.291190e-02
+       4  |  1.391872e-03
+       5  |  2.878303e-04
+       6  |  1.283444e-04
+       7  |  3.535175e-06
+       8  |  1.140743e-06
+       9  |  1.532770e-07
+      10  |  6.307270e-09
+--- 16 ranks, n=511, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  511 x 511 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            1.953125e-03
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 11 iterations.
+Final relative residual: 6.516484e-09
+
+Max pointwise error vs analytic solution: 1.254996e-05
+
+Setup time:  0.003220 s
+Solve time:  0.033187 s
+Total time:  0.036407 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.520877e+01
+       2  |  3.708827e+00
+       3  |  7.184372e-02
+       4  |  2.981490e-03
+       5  |  5.686154e-04
+       6  |  2.949441e-04
+       7  |  9.016881e-06
+       8  |  2.271006e-06
+       9  |  3.940229e-07
+      10  |  1.496836e-08
+      11  |  6.516484e-09
+--- 16 ranks, n=1023, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 12 iterations.
+Final relative residual: 2.505370e-09
+
+Max pointwise error vs analytic solution: 3.137471e-06
+
+Setup time:  0.004272 s
+Solve time:  0.135991 s
+Total time:  0.140263 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  3.030653e+01
+       2  |  7.996168e+00
+       3  |  1.592049e-01
+       4  |  6.384226e-03
+       5  |  1.112361e-03
+       6  |  6.479271e-04
+       7  |  2.372054e-05
+       8  |  4.509147e-06
+       9  |  9.876012e-07
+      10  |  3.711854e-08
+      11  |  1.309913e-08
+      12  |  2.505370e-09
+--- 16 ranks, n=2047, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  2047 x 2047 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            4.882812e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 12 iterations.
+Final relative residual: 7.503936e-09
+
+Max pointwise error vs analytic solution: 7.843697e-07
+
+Setup time:  0.005933 s
+Solve time:  0.578013 s
+Total time:  0.583945 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  6.036069e+01
+       2  |  1.702799e+01
+       3  |  3.583066e-01
+       4  |  1.370338e-02
+       5  |  2.157524e-03
+       6  |  1.385680e-03
+       7  |  6.253123e-05
+       8  |  8.928258e-06
+       9  |  2.456816e-06
+      10  |  9.361903e-08
+      11  |  2.599757e-08
+      12  |  7.503936e-09
+--- 16 ranks, n=4095, cavity, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  4095 x 4095 interior points
+Process grid: 4 x 4
+MPI ranks:    16
+h:            2.441406e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 13 iterations.
+Final relative residual: 5.337514e-10
+
+Max pointwise error vs analytic solution: 1.960916e-07
+
+Setup time:  0.015474 s
+Solve time:  2.504440 s
+Total time:  2.519914 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.202040e+02
+       2  |  3.592644e+01
+       3  |  8.170462e-01
+       4  |  2.950253e-02
+       5  |  4.151099e-03
+       6  |  2.908734e-03
+       7  |  1.602828e-04
+       8  |  1.771574e-05
+       9  |  6.065336e-06
+      10  |  2.386379e-07
+      11  |  5.149046e-08
+      12  |  2.010888e-08
+      13  |  5.337514e-10
+
+
+###############################################################################
+TCHPC Cluster: seagull
+Job 43912 (mpi_sm_cav_full) for User 'killalel' in Account 'mschpc'
+Finished at: Tue Jun 30 16:41:13 IST 2026
+
+Job efficiency estimates:
+=========================
+
+Job ID: 43912
+Cluster: seagull
+User/Group: killalel/killalel
+State: RUNNING
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:10:55
+CPU Efficiency: 22.62% of 00:48:16 core-walltime
+Job Wall-clock time: 00:03:01
+Memory Utilized: 2.36 GB
+Memory Efficiency: 3.84% of 61.52 GB (61.52 GB/node)
+WARNING: Efficiency statistics can only be obtained after the job has ended as seff tool is based on the accounting database data.
+
+Job completion status:
+======================
+
+JobID           JobName AllocCPUS NTasks NNodes     MaxRSS    MaxRSSNode  MaxDiskRead MaxDiskWrite    Elapsed      State ExitCode 
+------------ ---------- --------- ------ ------ ---------- ------------- ------------ ------------ ---------- ---------- -------- 
+43912        mpi_sm_ca+        16             1                                                      00:03:01    RUNNING      0:0 
+43912.batch       batch        16      1      1     22988K  seagull-n004       22.04M        2.00M   00:03:42  COMPLETED      0:0 
+43912.extern     extern        16      1      1                                                      00:03:01    RUNNING      0:0 
+43912.0      hydra_bst+        16      1      1     68068K  seagull-n004            0        0.00M   00:00:03  COMPLETED      0:0 
+43912.1      hydra_bst+        16      1      1     75000K  seagull-n004            0        0.00M   00:00:04  COMPLETED      0:0 
+43912.2      hydra_bst+        16      1      1     76308K  seagull-n004            0        0.00M   00:00:05  COMPLETED      0:0 
+43912.3      hydra_bst+        16      1      1     90020K  seagull-n004            0        0.00M   00:00:06  COMPLETED      0:0 
+43912.4      hydra_bst+        16      1      1    143348K  seagull-n004            0        0.00M   00:00:07  COMPLETED      0:0 
+43912.5      hydra_bst+        16      1      1    367108K  seagull-n004            0        0.00M   00:00:09  COMPLETED      0:0 
+43912.6      hydra_bst+        16      1      1   1284296K  seagull-n004            0        0.00M   00:00:19  COMPLETED      0:0 
+43912.7      hydra_bst+        16      1      1    163316K  seagull-n004            0        0.00M   00:00:19  COMPLETED      0:0 
+43912.8      hydra_bst+        16      1      1    162500K  seagull-n004            0        0.00M   00:00:20  COMPLETED      0:0 
+43912.9      hydra_bst+        16      1      1    171852K  seagull-n004            0        0.00M   00:00:21  COMPLETED      0:0 
+43912.10     hydra_bst+        16      1      1    182236K  seagull-n004            0        0.00M   00:00:22  COMPLETED      0:0 
+43912.11     hydra_bst+        16      1      1    239972K  seagull-n004            0        0.00M   00:00:23  COMPLETED      0:0 
+43912.12     hydra_bst+        16      1      1    459152K  seagull-n004            0        0.00M   00:00:24  COMPLETED      0:0 
+43912.13     hydra_bst+        16      1      1   1380268K  seagull-n004            0        0.00M   00:00:29  COMPLETED      0:0 
+43912.14     hydra_bst+        16      1      1    325672K  seagull-n004            0        0.00M   00:00:30  COMPLETED      0:0 
+43912.15     hydra_bst+        16      1      1    326116K  seagull-n004            0        0.00M   00:00:31  COMPLETED      0:0 
+43912.16     hydra_bst+        16      1      1    335436K  seagull-n004            0        0.00M   00:00:32  COMPLETED      0:0 
+43912.17     hydra_bst+        16      1      1    340548K  seagull-n004            0        0.00M   00:00:33  COMPLETED      0:0 
+43912.18     hydra_bst+        16      1      1    407900K  seagull-n004            0        0.00M   00:00:34  COMPLETED      0:0 
+43912.19     hydra_bst+        16      1      1    625524K  seagull-n004            0        0.00M   00:00:35  COMPLETED      0:0 
+43912.20     hydra_bst+        16      1      1   1517852K  seagull-n004            0        0.00M   00:00:39  COMPLETED      0:0 
+43912.21     hydra_bst+        16      1      1    657908K  seagull-n004            0        0.00M   00:00:40  COMPLETED      0:0 
+43912.22     hydra_bst+        16      1      1    648740K  seagull-n004            0        0.00M   00:00:41  COMPLETED      0:0 
+43912.23     hydra_bst+        16      1      1    658880K  seagull-n004            0        0.00M   00:00:41  COMPLETED      0:0 
+43912.24     hydra_bst+        16      1      1    666808K  seagull-n004            0        0.00M   00:00:42  COMPLETED      0:0 
+43912.25     hydra_bst+        16      1      1    725852K  seagull-n004            0        0.00M   00:00:43  COMPLETED      0:0 
+43912.26     hydra_bst+        16      1      1    955652K  seagull-n004            0        0.00M   00:00:45  COMPLETED      0:0 
+43912.27     hydra_bst+        16      1      1   1838464K  seagull-n004            0        0.00M   00:00:47  COMPLETED      0:0 
+43912.28     hydra_bst+        16      1      1   1308224K  seagull-n004            0        0.00M   00:00:48  COMPLETED      0:0 
+43912.29     hydra_bst+        16      1      1   1299928K  seagull-n004            0        0.00M   00:00:49  COMPLETED      0:0 
+43912.30     hydra_bst+        16      1      1   1317708K  seagull-n004            0        0.00M   00:00:50  COMPLETED      0:0 
+43912.31     hydra_bst+        16      1      1   1336812K  seagull-n004            0        0.00M   00:00:51  COMPLETED      0:0 
+43912.32     hydra_bst+        16      1      1   1382704K  seagull-n004            0        0.00M   00:00:52  COMPLETED      0:0 
+43912.33     hydra_bst+        16      1      1   1607064K  seagull-n004            0        0.00M   00:00:54  COMPLETED      0:0 
+43912.34     hydra_bst+        16      1      1   2479144K  seagull-n004            0        0.00M   00:00:56  COMPLETED      0:0 
+43912.35     hydra_bst+        16      1      1     71812K  seagull-n004            0        0.00M   00:00:57  COMPLETED      0:0 
+43912.36     hydra_bst+        16      1      1     72836K  seagull-n004            0        0.00M   00:00:57  COMPLETED      0:0 
+43912.37     hydra_bst+        16      1      1     71676K  seagull-n004            0        0.00M   00:00:58  COMPLETED      0:0 
+43912.38     hydra_bst+        16      1      1     88236K  seagull-n004            0        0.00M   00:00:59  COMPLETED      0:0 
+43912.39     hydra_bst+        16      1      1    135180K  seagull-n004            0        0.00M   00:01:00  COMPLETED      0:0 
+43912.40     hydra_bst+        16      1      1    334640K  seagull-n004            0        0.00M   00:01:03  COMPLETED      0:0 
+43912.41     hydra_bst+        16      1      1   1119708K  seagull-n004            0        0.00M   00:01:12  COMPLETED      0:0 
+43912.42     hydra_bst+        16      1      1    165252K  seagull-n004            0        0.00M   00:01:13  COMPLETED      0:0 
+43912.43     hydra_bst+        16      1      1    164600K  seagull-n004            0        0.00M   00:01:13  COMPLETED      0:0 
+43912.44     hydra_bst+        16      1      1    165472K  seagull-n004            0        0.00M   00:01:14  COMPLETED      0:0 
+43912.45     hydra_bst+        16      1      1    179756K  seagull-n004            0        0.00M   00:01:15  COMPLETED      0:0 
+43912.46     hydra_bst+        16      1      1    230744K  seagull-n004            0        0.00M   00:01:16  COMPLETED      0:0 
+43912.47     hydra_bst+        16      1      1    426036K  seagull-n004            0        0.00M   00:01:18  COMPLETED      0:0 
+43912.48     hydra_bst+        16      1      1   1216480K  seagull-n004            0        0.00M   00:01:23  COMPLETED      0:0 
+43912.49     hydra_bst+        16      1      1    318.50M  seagull-n004            0        0.00M   00:01:23  COMPLETED      0:0 
+43912.50     hydra_bst+        16      1      1    327880K  seagull-n004            0        0.00M   00:01:24  COMPLETED      0:0 
+43912.51     hydra_bst+        16      1      1    325176K  seagull-n004            0        0.00M   00:01:25  COMPLETED      0:0 
+43912.52     hydra_bst+        16      1      1    346192K  seagull-n004            0        0.00M   00:01:26  COMPLETED      0:0 
+43912.53     hydra_bst+        16      1      1    395132K  seagull-n004            0        0.00M   00:01:27  COMPLETED      0:0 
+43912.54     hydra_bst+        16      1      1    590416K  seagull-n004            0        0.00M   00:01:29  COMPLETED      0:0 
+43912.55     hydra_bst+        16      1      1   1376124K  seagull-n004            0        0.00M   00:01:33  COMPLETED      0:0 
+43912.56     hydra_bst+        16      1      1    656028K  seagull-n004            0        0.00M   00:01:34  COMPLETED      0:0 
+43912.57     hydra_bst+        16      1      1    648956K  seagull-n004            0        0.00M   00:01:35  COMPLETED      0:0 
+43912.58     hydra_bst+        16      1      1    656180K  seagull-n004            0        0.00M   00:01:36  COMPLETED      0:0 
+43912.59     hydra_bst+        16      1      1    672704K  seagull-n004            0        0.00M   00:01:37  COMPLETED      0:0 
+43912.60     hydra_bst+        16      1      1    719924K  seagull-n004            0        0.00M   00:01:38  COMPLETED      0:0 
+43912.61     hydra_bst+        16      1      1    906820K  seagull-n004            0        0.00M   00:01:39  COMPLETED      0:0 
+43912.62     hydra_bst+        16      1      1   1706096K  seagull-n004            0        0.00M   00:01:42  COMPLETED      0:0 
+43912.63     hydra_bst+        16      1      1   1296188K  seagull-n004            0        0.00M   00:01:43  COMPLETED      0:0 
+43912.64     hydra_bst+        16      1      1   1311440K  seagull-n004            0        0.00M   00:01:44  COMPLETED      0:0 
+43912.65     hydra_bst+        16      1      1   1311176K  seagull-n004            0        0.00M   00:01:45  COMPLETED      0:0 
+43912.66     hydra_bst+        16      1      1   1321252K  seagull-n004            0        0.00M   00:01:46  COMPLETED      0:0 
+43912.67     hydra_bst+        16      1      1      1335M  seagull-n004            0        0.00M   00:01:47  COMPLETED      0:0 
+43912.68     hydra_bst+        16      1      1   1578516K  seagull-n004            0        0.00M   00:01:48  COMPLETED      0:0 
+43912.69     hydra_bst+        16      1      1   2350736K  seagull-n004            0        0.00M   00:01:50  COMPLETED      0:0 
+43912.70     hydra_bst+        16      1      1     69916K  seagull-n004            0        0.00M   00:01:51  COMPLETED      0:0 
+43912.71     hydra_bst+        16      1      1     74696K  seagull-n004            0        0.00M   00:01:52  COMPLETED      0:0 
+43912.72     hydra_bst+        16      1      1     75732K  seagull-n004            0        0.00M   00:01:52  COMPLETED      0:0 
+43912.73     hydra_bst+        16      1      1     86380K  seagull-n004            0        0.00M   00:01:53  COMPLETED      0:0 
+43912.74     hydra_bst+        16      1      1    137036K  seagull-n004            0        0.00M   00:01:54  COMPLETED      0:0 
+43912.75     hydra_bst+        16      1      1    332420K  seagull-n004            0        0.00M   00:01:56  COMPLETED      0:0 
+43912.76     hydra_bst+        16      1      1   1119752K  seagull-n004            0        0.00M   00:02:02  COMPLETED      0:0 
+43912.77     hydra_bst+        16      1      1    165596K  seagull-n004            0        0.00M   00:02:02  COMPLETED      0:0 
+43912.78     hydra_bst+        16      1      1    168640K  seagull-n004            0        0.00M   00:02:03  COMPLETED      0:0 
+43912.79     hydra_bst+        16      1      1    169604K  seagull-n004            0        0.00M   00:02:04  COMPLETED      0:0 
+43912.80     hydra_bst+        16      1      1    187940K  seagull-n004            0        0.00M   00:02:05  COMPLETED      0:0 
+43912.81     hydra_bst+        16      1      1    231292K  seagull-n004            0        0.00M   00:02:06  COMPLETED      0:0 
+43912.82     hydra_bst+        16      1      1    428504K  seagull-n004            0        0.00M   00:02:07  COMPLETED      0:0 
+43912.83     hydra_bst+        16      1      1   1218324K  seagull-n004            0        0.00M   00:02:10  COMPLETED      0:0 
+43912.84     hydra_bst+        16      1      1    330120K  seagull-n004            0        0.00M   00:02:11  COMPLETED      0:0 
+43912.85     hydra_bst+        16      1      1    332516K  seagull-n004            0        0.00M   00:02:12  COMPLETED      0:0 
+43912.86     hydra_bst+        16      1      1    333492K  seagull-n004            0        0.00M   00:02:13  COMPLETED      0:0 
+43912.87     hydra_bst+        16      1      1    346416K  seagull-n004            0        0.00M   00:02:14  COMPLETED      0:0 
+43912.88     hydra_bst+        16      1      1    390960K  seagull-n004            0        0.00M   00:02:15  COMPLETED      0:0 
+43912.89     hydra_bst+        16      1      1    590372K  seagull-n004            0        0.00M   00:02:16  COMPLETED      0:0 
+43912.90     hydra_bst+        16      1      1   1381880K  seagull-n004            0        0.00M   00:02:18  COMPLETED      0:0 
+43912.91     hydra_bst+        16      1      1    656832K  seagull-n004            0        0.00M   00:02:19  COMPLETED      0:0 
+43912.92     hydra_bst+        16      1      1    655404K  seagull-n004            0        0.00M   00:02:20  COMPLETED      0:0 
+43912.93     hydra_bst+        16      1      1    650348K  seagull-n004            0        0.00M   00:02:21  COMPLETED      0:0 
+43912.94     hydra_bst+        16      1      1    662724K  seagull-n004            0        0.00M   00:02:21  COMPLETED      0:0 
+43912.95     hydra_bst+        16      1      1    711532K  seagull-n004            0        0.00M   00:02:22  COMPLETED      0:0 
+43912.96     hydra_bst+        16      1      1    909100K  seagull-n004            0        0.00M   00:02:24  COMPLETED      0:0 
+43912.97     hydra_bst+        16      1      1   1698676K  seagull-n004            0        0.00M   00:02:25  COMPLETED      0:0 
+43912.98     hydra_bst+        16      1      1   1303124K  seagull-n004            0        0.00M   00:02:26  COMPLETED      0:0 
+43912.99     hydra_bst+        16      1      1   1306012K  seagull-n004            0        0.00M   00:02:27  COMPLETED      0:0 
+43912.100    hydra_bst+        16      1      1   1318752K  seagull-n004            0        0.00M   00:02:28  COMPLETED      0:0 
+43912.101    hydra_bst+        16      1      1   1309268K  seagull-n004            0        0.00M   00:02:29  COMPLETED      0:0 
+43912.102    hydra_bst+        16      1      1   1363996K  seagull-n004            0        0.00M   00:02:30  COMPLETED      0:0 
+43912.103    hydra_bst+        16      1      1   1578568K  seagull-n004            0        0.00M   00:02:31  COMPLETED      0:0 
+43912.104    hydra_bst+        16      1      1   2356744K  seagull-n004            0        0.00M   00:02:33  COMPLETED      0:0 
+43912.105    hydra_bst+        16      1      1     70252K  seagull-n004            0        0.00M   00:02:33  COMPLETED      0:0 
+43912.106    hydra_bst+        16      1      1     70504K  seagull-n004            0        0.00M   00:02:34  COMPLETED      0:0 
+43912.107    hydra_bst+        16      1      1     74232K  seagull-n004            0        0.00M   00:02:35  COMPLETED      0:0 
+43912.108    hydra_bst+        16      1      1     84132K  seagull-n004            0        0.00M   00:02:36  COMPLETED      0:0 
+43912.109    hydra_bst+        16      1      1    135048K  seagull-n004            0        0.00M   00:02:37  COMPLETED      0:0 
+43912.110    hydra_bst+        16      1      1    338284K  seagull-n004            0        0.00M   00:02:41  COMPLETED      0:0 
+43912.111    hydra_bst+        16      1      1   1121936K  seagull-n004            0        0.00M   00:02:54  COMPLETED      0:0 
+43912.112    hydra_bst+        16      1      1    161492K  seagull-n004            0        0.00M   00:02:55  COMPLETED      0:0 
+43912.113    hydra_bst+        16      1      1    164516K  seagull-n004            0        0.00M   00:02:56  COMPLETED      0:0 
+43912.114    hydra_bst+        16      1      1    167696K  seagull-n004            0        0.00M   00:02:57  COMPLETED      0:0 
+43912.115    hydra_bst+        16      1      1    180056K  seagull-n004            0        0.00M   00:02:58  COMPLETED      0:0 
+43912.116    hydra_bst+        16      1      1    229112K  seagull-n004            0        0.00M   00:02:59  COMPLETED      0:0 
+43912.117    hydra_bst+        16      1      1    422460K  seagull-n004            0        0.00M   00:03:01  COMPLETED      0:0 
+43912.118    hydra_bst+        16      1      1   1213976K  seagull-n004            0        0.00M   00:03:08  COMPLETED      0:0 
+43912.119    hydra_bst+        16      1      1    329668K  seagull-n004            0        0.00M   00:03:09  COMPLETED      0:0 
+43912.120    hydra_bst+        16      1      1    328372K  seagull-n004            0        0.00M   00:03:10  COMPLETED      0:0 
+43912.121    hydra_bst+        16      1      1    339272K  seagull-n004            0        0.00M   00:03:11  COMPLETED      0:0 
+43912.122    hydra_bst+        16      1      1    347260K  seagull-n004            0        0.00M   00:03:12  COMPLETED      0:0 
+43912.123    hydra_bst+        16      1      1    395188K  seagull-n004            0        0.00M   00:03:13  COMPLETED      0:0 
+43912.124    hydra_bst+        16      1      1    588648K  seagull-n004            0        0.00M   00:03:15  COMPLETED      0:0 
+43912.125    hydra_bst+        16      1      1   1375976K  seagull-n004            0        0.00M   00:03:21  COMPLETED      0:0 
+43912.126    hydra_bst+        16      1      1    649964K  seagull-n004            0        0.00M   00:03:22  COMPLETED      0:0 
+43912.127    hydra_bst+        16      1      1    642860K  seagull-n004            0        0.00M   00:03:22  COMPLETED      0:0 
+43912.128    hydra_bst+        16      1      1    655992K  seagull-n004            0        0.00M   00:03:23  COMPLETED      0:0 
+43912.129    hydra_bst+        16      1      1    669280K  seagull-n004            0        0.00M   00:03:24  COMPLETED      0:0 
+43912.130    hydra_bst+        16      1      1       703M  seagull-n004            0        0.00M   00:03:25  COMPLETED      0:0 
+43912.131    hydra_bst+        16      1      1    911248K  seagull-n004            0        0.00M   00:03:27  COMPLETED      0:0 
+43912.132    hydra_bst+        16      1      1   1708708K  seagull-n004            0        0.00M   00:03:32  COMPLETED      0:0 
+43912.133    hydra_bst+        16      1      1   1308384K  seagull-n004            0        0.00M   00:03:33  COMPLETED      0:0 
+43912.134    hydra_bst+        16      1      1   1305736K  seagull-n004            0        0.00M   00:03:34  COMPLETED      0:0 
+43912.135    hydra_bst+        16      1      1   1309408K  seagull-n004            0        0.00M   00:03:35  COMPLETED      0:0 
+43912.136    hydra_bst+        16      1      1   1323612K  seagull-n004            0        0.00M   00:03:36  COMPLETED      0:0 
+43912.137    hydra_bst+        16      1      1   1360924K  seagull-n004            0        0.00M   00:03:37  COMPLETED      0:0 
+43912.138    hydra_bst+        16      1      1   1571024K  seagull-n004            0        0.00M   00:03:39  COMPLETED      0:0 
+43912.139    hydra_bst+        16      1      1   2358912K  seagull-n004            0        0.00M   00:03:42  COMPLETED      0:0 
+
+
+Job details:
+============
+
+JobId=43912 JobName=mpi_sm_cav_full
+   SLUID=sD89KWCJWFMD00
+   UserId=killalel(2215) GroupId=killalel(2147) MCS_label=N/A
+   Priority=200238 Nice=0 Account=mschpc QOS=normal
+   JobState=COMPLETING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:03:42 TimeLimit=00:45:00 TimeMin=N/A
+   SubmitTime=2026-06-30T16:37:31 EligibleTime=2026-06-30T16:37:31
+   AccrueTime=2026-06-30T16:37:31
+   StartTime=2026-06-30T16:37:31 EndTime=2026-06-30T16:41:13 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-06-30T16:37:31 Scheduler=Backfill
+   Partition=compute AllocNode:Sid=seagull01:3422652
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=seagull-n004
+   BatchHost=seagull-n004
+   NumNodes=1 NumCPUs=16 NumTasks=16 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=16,mem=63000M,node=1,billing=16
+   AllocTRES=cpu=16,mem=63000M,node=1,billing=16
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   JOB_GRES=(null)
+     Nodes=seagull-n004 CPU_IDs=0-15 Mem=63000 GRES=
+   MinCPUsNode=1 MinMemoryNode=63000M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/users/mschpc/2025/killalel/MPIv3/smoothers_dipole_full
+   SubmitLine=sbatch smoothers_dipole_full
+   WorkDir=/home/users/mschpc/2025/killalel/MPIv3
+   StdErr=/home/users/mschpc/2025/killalel/MPIv3/smoothers_cavity_full.err
+   StdIn=/dev/null
+   StdOut=/home/users/mschpc/2025/killalel/MPIv3/smoothers_cavity_full.out
+
+
+SLURM Bank Statement:
+=====================
+
+User           Usage |        Account     Usage | Account Limit Available (CPU hrs)
+---------- --------- + -------------- --------- + ------------- ---------
+ashech             0 |         MSCHPC     1,385 |        10,000     8,615
+cheny35           24 |         MSCHPC     1,385 |        10,000     8,615
+chojnace           1 |         MSCHPC     1,385 |        10,000     8,615
+czhang4            0 |         MSCHPC     1,385 |        10,000     8,615
+ecurry           128 |         MSCHPC     1,385 |        10,000     8,615
+fugu               0 |         MSCHPC     1,385 |        10,000     8,615
+killalel           5 |         MSCHPC     1,385 |        10,000     8,615
+knightsk           0 |         MSCHPC     1,385 |        10,000     8,615
+lanem2         1,224 |         MSCHPC     1,385 |        10,000     8,615
+mcleodco           0 |         MSCHPC     1,385 |        10,000     8,615
+mli7               0 |         MSCHPC     1,385 |        10,000     8,615
+ofarrepa           4 |         MSCHPC     1,385 |        10,000     8,615
+prasannp           0 |         MSCHPC     1,385 |        10,000     8,615
+sheriddy           0 |         MSCHPC     1,385 |        10,000     8,615
+srajendr           0 |         MSCHPC     1,385 |        10,000     8,615
+szhang2            0 |         MSCHPC     1,385 |        10,000     8,615
+vacariem           0 |         MSCHPC     1,385 |        10,000     8,615
+xiangyu            0 |         MSCHPC     1,385 |        10,000     8,615
+xniu               0 |         MSCHPC     1,385 |        10,000     8,615
+yangmi             0 |         MSCHPC     1,385 |        10,000     8,615
+yaoco              0 |         MSCHPC     1,385 |        10,000     8,615
+
+
+Acknowledgements:
+=================
+
+Note that usage of TCHPC Resources *must* be acknowledged in all publications.
+
+Please see this page for details relevant to this cluster:
+
+http://www.tchpc.tcd.ie/resources/acknowledgementpolicy
+
+################################################################################

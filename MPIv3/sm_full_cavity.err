@@ -1,0 +1,33 @@
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): [proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[proxy:0:0@seagull-n005.cluster] HYD_spawn (../../../../../src/pm/i_hydra/libhydra/spawn/intel/hydra_spawn.c:152): execvp error on file ./pcg_solver (No such file or directory)
+[2026-06-30T17:11:33.673] error: Detected 1 oom_kill event in StepId=43914.25. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:12:46.475] error: Detected 1 oom_kill event in StepId=43914.35. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:13:43.891] error: Detected 1 oom_kill event in StepId=43914.45. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:17:22.825] error: Detected 1 oom_kill event in StepId=43914.71. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:18:47.291] error: Detected 1 oom_kill event in StepId=43914.81. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:19:45.171] error: Detected 2 oom_kill events in StepId=43914.91. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:22:27.069] error: Detected 1 oom_kill event in StepId=43914.117. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:23:25.779] error: Detected 1 oom_kill event in StepId=43914.127. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:24:10.298] error: Detected 1 oom_kill event in StepId=43914.137. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:28:55.833] error: Detected 1 oom_kill event in StepId=43914.163. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:30:59.707] error: Detected 1 oom_kill event in StepId=43914.173. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory
+[2026-06-30T17:32:23.862] error: Detected 1 oom_kill event in StepId=43914.183. Some of the step tasks have been OOM Killed.
+srun: error: seagull-n005: task 0: Out Of Memory

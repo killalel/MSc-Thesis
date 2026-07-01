@@ -26,6 +26,182 @@ void wj_smooth(double *u, const double *f, double omega, int nu, const Decomp *d
     free(Au);
 }
 
+//Symmetric Gauss-Seidel smoother. Each rank does GS locally using
+//stale halo values — effectively "local GS / global Jacobi". A halo
+//exchange before each sweep direction refreshes the boundary data.
+void gs_smooth(double *u, const double *f, double omega, int nu, const Decomp *d)
+{
+    (void)omega;
+    int nx = d->n_local[1];
+    int ny = d->n_local[0];
+    double h2 = d->h * d->h;
+
+    double *hl = malloc(ny * sizeof(double));
+    double *hr = malloc(ny * sizeof(double));
+    double *hb = malloc(nx * sizeof(double));
+    double *ht = malloc(nx * sizeof(double));
+
+    for (int sweep = 0; sweep < nu; sweep++) {
+        //forward pass
+        halo_exchange(u, nx, ny, hl, hr, hb, ht, d);
+        for (int i = 0; i < ny; i++) {
+            for (int j = 0; j < nx; j++) {
+                double nb = 0.0;
+                if (j > 0)          nb += u[i * nx + (j - 1)];
+                else if (d->neighbours[0] != MPI_PROC_NULL) nb += hl[i];
+                if (j < nx - 1)     nb += u[i * nx + (j + 1)];
+                else if (d->neighbours[1] != MPI_PROC_NULL) nb += hr[i];
+                if (i > 0)          nb += u[(i - 1) * nx + j];
+                else if (d->neighbours[2] != MPI_PROC_NULL) nb += hb[j];
+                if (i < ny - 1)     nb += u[(i + 1) * nx + j];
+                else if (d->neighbours[3] != MPI_PROC_NULL) nb += ht[j];
+                u[i * nx + j] = (h2 * f[i * nx + j] + nb) / 4.0;
+            }
+        }
+
+        //backward pass
+        halo_exchange(u, nx, ny, hl, hr, hb, ht, d);
+        for (int i = ny - 1; i >= 0; i--) {
+            for (int j = nx - 1; j >= 0; j--) {
+                double nb = 0.0;
+                if (j > 0)          nb += u[i * nx + (j - 1)];
+                else if (d->neighbours[0] != MPI_PROC_NULL) nb += hl[i];
+                if (j < nx - 1)     nb += u[i * nx + (j + 1)];
+                else if (d->neighbours[1] != MPI_PROC_NULL) nb += hr[i];
+                if (i > 0)          nb += u[(i - 1) * nx + j];
+                else if (d->neighbours[2] != MPI_PROC_NULL) nb += hb[j];
+                if (i < ny - 1)     nb += u[(i + 1) * nx + j];
+                else if (d->neighbours[3] != MPI_PROC_NULL) nb += ht[j];
+                u[i * nx + j] = (h2 * f[i * nx + j] + nb) / 4.0;
+            }
+        }
+    }
+
+    free(hl); free(hr); free(hb); free(ht);
+}
+
+
+//Symmetric Red-Black Gauss-Seidel smoother. Points are coloured by
+//global index parity: red if (gi+gj) even, black if odd. Within each
+//colour all updates are independent, so this parallelises cleanly —
+//only the halo exchange between colour passes is needed.
+void rb_smooth(double *u, const double *f, double omega, int nu, const Decomp *d)
+{
+    (void)omega;
+    int nx = d->n_local[1];
+    int ny = d->n_local[0];
+    double h2 = d->h * d->h;
+
+    double *hl = malloc(ny * sizeof(double));
+    double *hr = malloc(ny * sizeof(double));
+    double *hb = malloc(nx * sizeof(double));
+    double *ht = malloc(nx * sizeof(double));
+
+    for (int sweep = 0; sweep < nu; sweep++) {
+        //forward: red then black
+        for (int colour = 0; colour <= 1; colour++) {
+            halo_exchange(u, nx, ny, hl, hr, hb, ht, d);
+            for (int i = 0; i < ny; i++) {
+                int gi = d->offsets[0] + i;
+                for (int j = 0; j < nx; j++) {
+                    int gj = d->offsets[1] + j;
+                    if ((gi + gj) % 2 != colour) continue;
+                    double nb = 0.0;
+                    if (j > 0)          nb += u[i * nx + (j - 1)];
+                    else if (d->neighbours[0] != MPI_PROC_NULL) nb += hl[i];
+                    if (j < nx - 1)     nb += u[i * nx + (j + 1)];
+                    else if (d->neighbours[1] != MPI_PROC_NULL) nb += hr[i];
+                    if (i > 0)          nb += u[(i - 1) * nx + j];
+                    else if (d->neighbours[2] != MPI_PROC_NULL) nb += hb[j];
+                    if (i < ny - 1)     nb += u[(i + 1) * nx + j];
+                    else if (d->neighbours[3] != MPI_PROC_NULL) nb += ht[j];
+                    u[i * nx + j] = (h2 * f[i * nx + j] + nb) / 4.0;
+                }
+            }
+        }
+
+        //backward: black then red
+        for (int colour = 1; colour >= 0; colour--) {
+            halo_exchange(u, nx, ny, hl, hr, hb, ht, d);
+            for (int i = ny - 1; i >= 0; i--) {
+                int gi = d->offsets[0] + i;
+                for (int j = nx - 1; j >= 0; j--) {
+                    int gj = d->offsets[1] + j;
+                    if ((gi + gj) % 2 != colour) continue;
+                    double nb = 0.0;
+                    if (j > 0)          nb += u[i * nx + (j - 1)];
+                    else if (d->neighbours[0] != MPI_PROC_NULL) nb += hl[i];
+                    if (j < nx - 1)     nb += u[i * nx + (j + 1)];
+                    else if (d->neighbours[1] != MPI_PROC_NULL) nb += hr[i];
+                    if (i > 0)          nb += u[(i - 1) * nx + j];
+                    else if (d->neighbours[2] != MPI_PROC_NULL) nb += hb[j];
+                    if (i < ny - 1)     nb += u[(i + 1) * nx + j];
+                    else if (d->neighbours[3] != MPI_PROC_NULL) nb += ht[j];
+                    u[i * nx + j] = (h2 * f[i * nx + j] + nb) / 4.0;
+                }
+            }
+        }
+    }
+
+    free(hl); free(hr); free(hb); free(ht);
+}
+
+
+//Symmetric SOR smoother. Same structure as GS but blends the
+//Gauss-Seidel update with the old value: u = (1-omega)*u_old + omega*u_gs.
+void sor_smooth(double *u, const double *f, double omega, int nu, const Decomp *d)
+{
+    int nx = d->n_local[1];
+    int ny = d->n_local[0];
+    double h2 = d->h * d->h;
+
+    double *hl = malloc(ny * sizeof(double));
+    double *hr = malloc(ny * sizeof(double));
+    double *hb = malloc(nx * sizeof(double));
+    double *ht = malloc(nx * sizeof(double));
+
+    for (int sweep = 0; sweep < nu; sweep++) {
+        //forward pass
+        halo_exchange(u, nx, ny, hl, hr, hb, ht, d);
+        for (int i = 0; i < ny; i++) {
+            for (int j = 0; j < nx; j++) {
+                double nb = 0.0;
+                if (j > 0)          nb += u[i * nx + (j - 1)];
+                else if (d->neighbours[0] != MPI_PROC_NULL) nb += hl[i];
+                if (j < nx - 1)     nb += u[i * nx + (j + 1)];
+                else if (d->neighbours[1] != MPI_PROC_NULL) nb += hr[i];
+                if (i > 0)          nb += u[(i - 1) * nx + j];
+                else if (d->neighbours[2] != MPI_PROC_NULL) nb += hb[j];
+                if (i < ny - 1)     nb += u[(i + 1) * nx + j];
+                else if (d->neighbours[3] != MPI_PROC_NULL) nb += ht[j];
+                double gs = (h2 * f[i * nx + j] + nb) / 4.0;
+                u[i * nx + j] = (1.0 - omega) * u[i * nx + j] + omega * gs;
+            }
+        }
+
+        //backward pass
+        halo_exchange(u, nx, ny, hl, hr, hb, ht, d);
+        for (int i = ny - 1; i >= 0; i--) {
+            for (int j = nx - 1; j >= 0; j--) {
+                double nb = 0.0;
+                if (j > 0)          nb += u[i * nx + (j - 1)];
+                else if (d->neighbours[0] != MPI_PROC_NULL) nb += hl[i];
+                if (j < nx - 1)     nb += u[i * nx + (j + 1)];
+                else if (d->neighbours[1] != MPI_PROC_NULL) nb += hr[i];
+                if (i > 0)          nb += u[(i - 1) * nx + j];
+                else if (d->neighbours[2] != MPI_PROC_NULL) nb += hb[j];
+                if (i < ny - 1)     nb += u[(i + 1) * nx + j];
+                else if (d->neighbours[3] != MPI_PROC_NULL) nb += ht[j];
+                double gs = (h2 * f[i * nx + j] + nb) / 4.0;
+                u[i * nx + j] = (1.0 - omega) * u[i * nx + j] + omega * gs;
+            }
+        }
+    }
+
+    free(hl); free(hr); free(hb); free(ht);
+}
+
+
 // restrict2d
 //
 // Full-weighting restriction from fine grid (df) to coarse grid (dc).

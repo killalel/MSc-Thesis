@@ -37,10 +37,10 @@ typedef struct {
 // Returns a heap-allocated Decomp; caller frees with decomp_free().
 Decomp *decomp_create(int n_global);
 
-//Frees the Decomp and its communicator.
+// Frees the Decomp and its communicator.
 void decomp_free(Decomp *d);
 
-//Prints a summary of the decomposition from rank 0.
+// Prints a summary of the decomposition from rank 0.
 void decomp_print(const Decomp *d);
 
 #endif // DECOMP_H

@@ -1,0 +1,225 @@
+rm -f main.o decomp.o poisson2d_original.o linalg.o precond.o pcg.o multigrid.o pcg_solver
+mpicc -O2 -Wall -Wextra -std=c11 -c -o main.o main.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o decomp.o decomp.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o poisson2d_original.o poisson2d_original.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o linalg.o linalg.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o precond.o precond.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o pcg.o pcg.c
+mpicc -O2 -Wall -Wextra -std=c11 -c -o multigrid.o multigrid.c
+mpicc -O2 -Wall -Wextra -std=c11 -o pcg_solver main.o decomp.o poisson2d_original.o linalg.o precond.o pcg.o multigrid.o -lm
+--- 8 ranks, n=1023, multigrid ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid
+
+PCG converged in 8 iterations.
+Final relative residual: 9.282537e-09
+
+Max pointwise error vs analytic solution: 5.600931e-08
+
+Setup time:  0.003647 s
+Solve time:  0.055391 s
+Total time:  0.059039 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  5.214742e-02
+       2  |  4.137822e-03
+       3  |  5.407055e-04
+       4  |  4.610190e-05
+       5  |  6.716233e-06
+       6  |  8.795835e-07
+       7  |  8.291879e-08
+       8  |  9.282537e-09
+--- 8 ranks, n=1023, multigrid_gs ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_gs
+
+PCG converged in 5 iterations.
+Final relative residual: 6.387593e-09
+
+Max pointwise error vs analytic solution: 1.024505e-07
+
+Setup time:  0.002833 s
+Solve time:  0.084319 s
+Total time:  0.087152 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.359894e-02
+       2  |  1.884342e-04
+       3  |  1.070820e-05
+       4  |  1.988433e-07
+       5  |  6.387593e-09
+--- 8 ranks, n=1023, multigrid_rb ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_rb
+
+PCG converged in 6 iterations.
+Final relative residual: 7.946914e-10
+
+Max pointwise error vs analytic solution: 3.351833e-08
+
+Setup time:  0.002883 s
+Solve time:  0.068443 s
+Total time:  0.071326 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  4.624098e-02
+       2  |  1.018614e-03
+       3  |  2.786424e-05
+       4  |  9.363557e-07
+       5  |  2.973206e-08
+       6  |  7.946914e-10
+--- 8 ranks, n=1023, multigrid_sor ---
+=== MPI PCG Poisson Solver ===
+Global grid:  1023 x 1023 interior points
+Process grid: 4 x 2
+MPI ranks:    8
+h:            9.765625e-04
+Tolerance:    1.00e-08
+Max iter:     10000
+Precond:      multigrid_sor
+
+PCG converged in 9 iterations.
+Final relative residual: 1.236438e-09
+
+Max pointwise error vs analytic solution: 3.400402e-08
+
+Setup time:  0.003278 s
+Solve time:  0.183242 s
+Total time:  0.186520 s
+
+Iteration | Rel. Residual
+----------+--------------
+       0  |  1.000000e+00
+       1  |  1.394220e-02
+       2  |  7.919912e-03
+       3  |  2.510064e-04
+       4  |  4.236960e-05
+       5  |  2.160913e-05
+       6  |  1.053644e-06
+       7  |  6.772713e-08
+       8  |  3.473602e-08
+       9  |  1.236438e-09
+
+
+###############################################################################
+TCHPC Cluster: seagull
+Job 43904 (mpi_smoothers) for User 'killalel' in Account 'mschpc'
+Finished at: Mon Jun 29 17:53:30 IST 2026
+
+Job efficiency estimates:
+=========================
+
+
+
+Job completion status:
+======================
+
+JobID           JobName AllocCPUS NTasks NNodes     MaxRSS    MaxRSSNode  MaxDiskRead MaxDiskWrite    Elapsed      State ExitCode 
+------------ ---------- --------- ------ ------ ---------- ------------- ------------ ------------ ---------- ---------- -------- 
+43904        mpi_smoot+         8             1                                                      00:00:07  COMPLETED      0:0 
+43904.batch       batch         8      1      1     23204K  seagull-n003            0        0.00M   00:00:07  COMPLETED      0:0 
+43904.extern     extern         8      1      1                                                      00:00:07  COMPLETED      0:0 
+43904.0      hydra_bst+         8      1      1    730020K  seagull-n003            0        0.00M   00:00:04  COMPLETED      0:0 
+43904.1      hydra_bst+         8      1      1    713028K  seagull-n003            0        0.00M   00:00:05  COMPLETED      0:0 
+43904.2      hydra_bst+         8      1      1    709936K  seagull-n003            0        0.00M   00:00:06  COMPLETED      0:0 
+43904.3      hydra_bst+         8      1      1    719660K  seagull-n003            0        0.00M   00:00:07  COMPLETED      0:0 
+
+
+Job details:
+============
+
+JobId=43904 JobName=mpi_smoothers
+   SLUID=sD89KWA4TNP000
+   UserId=killalel(2215) GroupId=killalel(2147) MCS_label=N/A
+   Priority=222797 Nice=0 Account=mschpc QOS=normal
+   JobState=COMPLETING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:00:07 TimeLimit=00:10:00 TimeMin=N/A
+   SubmitTime=2026-06-29T17:53:23 EligibleTime=2026-06-29T17:53:23
+   AccrueTime=2026-06-29T17:53:23
+   StartTime=2026-06-29T17:53:23 EndTime=2026-06-29T17:53:30 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-06-29T17:53:23 Scheduler=Main
+   Partition=compute AllocNode:Sid=seagull01:2866488
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=seagull-n003
+   BatchHost=seagull-n003
+   NumNodes=1 NumCPUs=8 NumTasks=8 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=63000M,node=1,billing=8
+   AllocTRES=cpu=8,mem=63000M,node=1,billing=8
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   JOB_GRES=(null)
+     Nodes=seagull-n003 CPU_IDs=0-3,8-11 Mem=63000 GRES=
+   MinCPUsNode=1 MinMemoryNode=63000M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/users/mschpc/2025/killalel/MPIv3/mpi_smoothers.sh
+   SubmitLine=sbatch mpi_smoothers.sh
+   WorkDir=/home/users/mschpc/2025/killalel/MPIv3
+   StdErr=/home/users/mschpc/2025/killalel/MPIv3/smoothers_1023_8ranks.err
+   StdIn=/dev/null
+   StdOut=/home/users/mschpc/2025/killalel/MPIv3/smoothers_1023_8ranks.out
+
+
+SLURM Bank Statement:
+=====================
+
+User           Usage |        Account     Usage | Account Limit Available (CPU hrs)
+---------- --------- + -------------- --------- + ------------- ---------
+ashech             0 |         MSCHPC       480 |        10,000     9,520
+cheny35           25 |         MSCHPC       480 |        10,000     9,520
+chojnace           1 |         MSCHPC       480 |        10,000     9,520
+czhang4            0 |         MSCHPC       480 |        10,000     9,520
+ecurry           134 |         MSCHPC       480 |        10,000     9,520
+fugu               0 |         MSCHPC       480 |        10,000     9,520
+killalel           2 |         MSCHPC       480 |        10,000     9,520
+knightsk           0 |         MSCHPC       480 |        10,000     9,520
+lanem2           315 |         MSCHPC       480 |        10,000     9,520
+mcleodco           0 |         MSCHPC       480 |        10,000     9,520
+mli7               0 |         MSCHPC       480 |        10,000     9,520
+ofarrepa           4 |         MSCHPC       480 |        10,000     9,520
+prasannp           0 |         MSCHPC       480 |        10,000     9,520
+sheriddy           0 |         MSCHPC       480 |        10,000     9,520
+srajendr           0 |         MSCHPC       480 |        10,000     9,520
+szhang2            0 |         MSCHPC       480 |        10,000     9,520
+vacariem           0 |         MSCHPC       480 |        10,000     9,520
+xiangyu            0 |         MSCHPC       480 |        10,000     9,520
+xniu               0 |         MSCHPC       480 |        10,000     9,520
+yangmi             0 |         MSCHPC       480 |        10,000     9,520
+yaoco              0 |         MSCHPC       480 |        10,000     9,520
+
+
+Acknowledgements:
+=================
+
+Note that usage of TCHPC Resources *must* be acknowledged in all publications.
+
+Please see this page for details relevant to this cluster:
+
+http://www.tchpc.tcd.ie/resources/acknowledgementpolicy
+
+################################################################################

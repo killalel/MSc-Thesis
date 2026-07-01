@@ -58,7 +58,6 @@ void build_rhs(double *b, const Decomp *d)
     }
 }
 
-//Here we compute the maximum pointwise error between the computed solution x and the analytic solution at the interior grid points.
 double max_error(const double *x, const Decomp *d)
 {
     int nx = d->n_local[1];
@@ -75,7 +74,6 @@ double max_error(const double *x, const Decomp *d)
     }
 
     double global_err = 0.0;
-    // Use MPI_Allreduce to find the maximum error across all ranks.
     MPI_Allreduce(&local_err, &global_err, 1, MPI_DOUBLE, MPI_MAX, d->cart_comm);
     return global_err;
 }

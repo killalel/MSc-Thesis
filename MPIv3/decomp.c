@@ -43,14 +43,12 @@ Decomp *decomp_create(int n_global)
     return d;
 }
 
-//Free the Decomp structure and its associated MPI communicator.
 void decomp_free(Decomp *d)
 {
     MPI_Comm_free(&d->cart_comm);
     free(d);
 }
 
-//Print the decomposition information for rank 0.
 void decomp_print(const Decomp *d)
 {
     if (d->rank != 0) return;
